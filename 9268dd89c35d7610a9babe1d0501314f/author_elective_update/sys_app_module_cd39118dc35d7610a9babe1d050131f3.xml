@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="FlightOps 360">c939190dc35d7610a9babe1d050131ea</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Closed</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_1603912_flightop_ticket_booking</name>
+        <order>5</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query>active=false^EQ</query>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 05:23:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>cd39118dc35d7610a9babe1d050131f3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Closed</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sys_app_module_cd39118dc35d7610a9babe1d050131f3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 05:23:17</sys_updated_on>
+        <timeline_page/>
+        <title>Closed</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</application>
+        <file_path/>
+        <instance_id>dde2881d3b706ad4986d048aa4e45a23</instance_id>
+        <instance_name>dev320909</instance_name>
+        <name>sys_app_module_cd39118dc35d7610a9babe1d050131f3</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="FlightOps 360">c939190dc35d7610a9babe1d050131ea</application><assessment/><device_type/><filter/><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><mobile_title>Closed</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>x_1603912_flightop_ticket_booking</name><order>5</order><override_menu_roles>false</override_menu_roles><query>active=false^EQ</query><report/><require_confirmation>true</require_confirmation><roles/><sys_class_name>sys_app_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-11-17 05:23:17</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>cd39118dc35d7610a9babe1d050131f3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Closed</sys_name><sys_overrides/><sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package><sys_policy/><sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope><sys_update_name>sys_app_module_cd39118dc35d7610a9babe1d050131f3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-11-17 05:23:17</sys_updated_on><timeline_page/><title>Closed</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>1857026007</payload_hash>
+        <record_name>Closed</record_name>
+        <reverted_from/>
+        <source>9268dd89c35d7610a9babe1d05013152</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 05:23:17</sys_created_on>
+        <sys_id>0539118dc35d7610a9babe1d050131f7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19a904477ed0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 05:23:17</sys_updated_on>
+        <type>Module</type>
+        <update_guid>0139118d115d76104831d9c9ae125ff6</update_guid>
+        <update_guid_history>0139118d115d76104831d9c9ae125ff6:1857026007</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Closed">400ad9cdc35d7610a9babe1d0501312b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 05:26:46</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>21dacaf289c3499b9fc1d0f8764c0d61</sys_id>
+        <sys_metadata>cd39118dc35d7610a9babe1d050131f3</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Closed</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_scope_delete display_value="">08d100301ab24d6485b9eced5bf62f31</sys_scope_delete>
+        <sys_update_name>sys_app_module_cd39118dc35d7610a9babe1d050131f3</sys_update_name>
+        <sys_update_version display_value="sys_app_module_cd39118dc35d7610a9babe1d050131f3">0539118dc35d7610a9babe1d050131f7</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 05:26:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
