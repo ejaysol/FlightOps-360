@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="84718609c391b610a9babe1d050131a4" label="Crew Schedule" max_length="40" name="x_1603912_flightop_crew_schedule" type="collection">
+        <element label="Scheduled Time" mandatory="true" max_length="40" name="u_scheduled_time" type="glide_date_time"/>
+        <element default="true" display="true" label="Compliance Flag" max_length="40" name="u_compliance_flag" type="boolean"/>
+        <element label="Crew Member" mandatory="true" max_length="32" name="u_crew_member_id" reference="sys_user" reference_qual="active=true^roles.nameLIKEcrew" reference_qual_condition="active=true^roles.nameLIKEcrew" type="reference"/>
+        <element label="Flight Number" mandatory="true" max_length="100" name="u_flight_number" type="string"/>
+        <element choice="1" label="Role" mandatory="true" max_length="40" name="u_role" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Co-Pilot" sequence="200" value="copilot"/>
+                <element inactive_on_update="false" label="Attendant" sequence="300" value="attendant"/>
+                <element inactive_on_update="false" label="Pilot" sequence="100" value="pilot"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="u_crew_member_id"/>
+        </index>
+    </element>
+</database>
