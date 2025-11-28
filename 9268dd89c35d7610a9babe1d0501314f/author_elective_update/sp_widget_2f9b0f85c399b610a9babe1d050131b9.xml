@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[function FlightOpsHeaderController($window) {
+  var c = this;
+  c.handlePrimaryAction = function() {
+    if (c.data.primaryCta.link) {
+      $window.location = c.data.primaryCta.link;
+    }
+  };
+  c.handleSecondaryAction = function() {
+    if (c.data.secondaryCta.link) {
+      $window.location = c.data.secondaryCta.link;
+    }
+  };
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flightops-header {&#13;
+  background: linear-gradient(135deg,#0F62FE,#6C63FF);&#13;
+  color: #F4F7FB;&#13;
+  padding: 48px 0;&#13;
+}&#13;
+.flightops-header__eyebrow {&#13;
+  text-transform: uppercase;&#13;
+  letter-spacing: 0.2em;&#13;
+  color: rgba(255,255,255,0.7);&#13;
+}&#13;
+.flightops-header__title {&#13;
+  font-size: 2.5rem;&#13;
+  font-weight: 700;&#13;
+  margin-bottom: 0.75rem;&#13;
+}&#13;
+.flightops-header__subtitle {&#13;
+  font-size: 1.125rem;&#13;
+  max-width: 520px;&#13;
+}&#13;
+.flightops-header__actions .btn-primary {&#13;
+  background: #FFB347;&#13;
+  border-color: #FFB347;&#13;
+  color: #0A1F44;&#13;
+  margin-right: 12px;&#13;
+}&#13;
+.flightops-header__actions .btn-primary:hover {&#13;
+  background: #D7263D;&#13;
+  border-color: #D7263D;&#13;
+  color: #F4F7FB;&#13;
+}&#13;
+.flightops-header__image {&#13;
+  max-height: 220px;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Branded hero/header banner for FlightOps 360 portal</description>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>flightops_header</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>FlightOps Header</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.eyebrow = options.eyebrow || 'AI-Enhanced Travel';
+  data.title = options.title || 'FlightOps 360';
+  data.subtitle = options.subtitle || 'Book flights, manage crews, and monitor operations in one workspace.';
+  data.primaryCta = {
+    label: options.primary_cta_label || 'Book a Flight',
+    link: options.primary_cta_link || '?id=sc_cat_item&sys_id={{CAT_ITEM_SYS_ID}}'
+  };
+  data.secondaryCta = {
+    label: options.secondary_cta_label || 'View Dashboard',
+    link: options.secondary_cta_link || '?id=flightops_dashboard'
+  };
+  data.heroImage = options.hero_image || '';
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 13:56:47</sys_created_on>
+        <sys_id>2f9b0f85c399b610a9babe1d050131b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlightOps Header</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sp_widget_2f9b0f85c399b610a9babe1d050131b9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 13:56:47</sys_updated_on>
+        <template><![CDATA[<div class="flightops-header" role="banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <p class="flightops-header__eyebrow">{{c.data.eyebrow}}</p>
+        <h1 class="flightops-header__title">{{c.data.title}}</h1>
+        <p class="flightops-header__subtitle">{{c.data.subtitle}}</p>
+        <div class="flightops-header__actions">
+          <button class="btn btn-primary" ng-click="c.handlePrimaryAction()">
+            {{c.data.primaryCta.label}}
+          </button>
+          <button class="btn btn-link" ng-click="c.handleSecondaryAction()">
+            {{c.data.secondaryCta.label}}
+          </button>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <img ng-if="c.data.heroImage" ng-src="{{c.data.heroImage}}" alt="FlightOps illustration" class="img-responsive flightops-header__image" />
+      </div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</application>
+        <file_path/>
+        <instance_id>dde2881d3b706ad4986d048aa4e45a23</instance_id>
+        <instance_name>dev320909</instance_name>
+        <name>sp_widget_2f9b0f85c399b610a9babe1d050131b9</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function FlightOpsHeaderController($window) {
+  var c = this;
+  c.handlePrimaryAction = function() {
+    if (c.data.primaryCta.link) {
+      $window.location = c.data.primaryCta.link;
+    }
+  };
+  c.handleSecondaryAction = function() {
+    if (c.data.secondaryCta.link) {
+      $window.location = c.data.secondaryCta.link;
+    }
+  };
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.flightops-header {&amp;#13;
+  background: linear-gradient(135deg,#0F62FE,#6C63FF);&amp;#13;
+  color: #F4F7FB;&amp;#13;
+  padding: 48px 0;&amp;#13;
+}&amp;#13;
+.flightops-header__eyebrow {&amp;#13;
+  text-transform: uppercase;&amp;#13;
+  letter-spacing: 0.2em;&amp;#13;
+  color: rgba(255,255,255,0.7);&amp;#13;
+}&amp;#13;
+.flightops-header__title {&amp;#13;
+  font-size: 2.5rem;&amp;#13;
+  font-weight: 700;&amp;#13;
+  margin-bottom: 0.75rem;&amp;#13;
+}&amp;#13;
+.flightops-header__subtitle {&amp;#13;
+  font-size: 1.125rem;&amp;#13;
+  max-width: 520px;&amp;#13;
+}&amp;#13;
+.flightops-header__actions .btn-primary {&amp;#13;
+  background: #FFB347;&amp;#13;
+  border-color: #FFB347;&amp;#13;
+  color: #0A1F44;&amp;#13;
+  margin-right: 12px;&amp;#13;
+}&amp;#13;
+.flightops-header__actions .btn-primary:hover {&amp;#13;
+  background: #D7263D;&amp;#13;
+  border-color: #D7263D;&amp;#13;
+  color: #F4F7FB;&amp;#13;
+}&amp;#13;
+.flightops-header__image {&amp;#13;
+  max-height: 220px;&amp;#13;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description&gt;Branded hero/header banner for FlightOps 360 portal&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;flightops_header&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;FlightOps Header&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+  data.eyebrow = options.eyebrow || 'AI-Enhanced Travel';
+  data.title = options.title || 'FlightOps 360';
+  data.subtitle = options.subtitle || 'Book flights, manage crews, and monitor operations in one workspace.';
+  data.primaryCta = {
+    label: options.primary_cta_label || 'Book a Flight',
+    link: options.primary_cta_link || '?id=sc_cat_item&amp;sys_id={{CAT_ITEM_SYS_ID}}'
+  };
+  data.secondaryCta = {
+    label: options.secondary_cta_label || 'View Dashboard',
+    link: options.secondary_cta_link || '?id=flightops_dashboard'
+  };
+  data.heroImage = options.hero_image || '';
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-11-17 13:56:47&lt;/sys_created_on&gt;&lt;sys_id&gt;2f9b0f85c399b610a9babe1d050131b9&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;FlightOps Header&lt;/sys_name&gt;&lt;sys_package display_value="FlightOps 360" source="x_1603912_flightop"&gt;9268dd89c35d7610a9babe1d0501314f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="FlightOps 360"&gt;9268dd89c35d7610a9babe1d0501314f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_2f9b0f85c399b610a9babe1d050131b9&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-11-17 13:56:47&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="flightops-header" role="banner"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row align-items-center"&gt;
+      &lt;div class="col-md-8"&gt;
+        &lt;p class="flightops-header__eyebrow"&gt;{{c.data.eyebrow}}&lt;/p&gt;
+        &lt;h1 class="flightops-header__title"&gt;{{c.data.title}}&lt;/h1&gt;
+        &lt;p class="flightops-header__subtitle"&gt;{{c.data.subtitle}}&lt;/p&gt;
+        &lt;div class="flightops-header__actions"&gt;
+          &lt;button class="btn btn-primary" ng-click="c.handlePrimaryAction()"&gt;
+            {{c.data.primaryCta.label}}
+          &lt;/button&gt;
+          &lt;button class="btn btn-link" ng-click="c.handleSecondaryAction()"&gt;
+            {{c.data.secondaryCta.label}}
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-4 text-center"&gt;
+        &lt;img ng-if="c.data.heroImage" ng-src="{{c.data.heroImage}}" alt="FlightOps illustration" class="img-responsive flightops-header__image" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1432034626</payload_hash>
+        <record_name>FlightOps Header</record_name>
+        <reverted_from/>
+        <source>8d6f02c5c315b610a9babe1d050131fc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 13:56:47</sys_created_on>
+        <sys_id>4bbe0f8dc3d9b610a9babe1d05013124</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19a921a97b70000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 13:56:47</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>47be0f8dded9b61022cfae2cf8a51423</update_guid>
+        <update_guid_history>47be0f8dded9b61022cfae2cf8a51423:-1432034626</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="FlightOps Header">51221745c31db610a9babe1d050131aa</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 14:11:41</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>84ca5313f4be4333bcf624c33242a179</sys_id>
+        <sys_metadata>2f9b0f85c399b610a9babe1d050131b9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlightOps Header</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_scope_delete display_value="">08d100301ab24d6485b9eced5bf62f31</sys_scope_delete>
+        <sys_update_name>sp_widget_2f9b0f85c399b610a9babe1d050131b9</sys_update_name>
+        <sys_update_version display_value="sp_widget_2f9b0f85c399b610a9babe1d050131b9">4bbe0f8dc3d9b610a9babe1d05013124</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 14:11:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

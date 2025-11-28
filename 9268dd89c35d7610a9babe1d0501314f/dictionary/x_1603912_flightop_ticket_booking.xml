@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="2f0ad5cdc35d7610a9babe1d0501318d" label="Ticket Booking" max_length="40" name="x_1603912_flightop_ticket_booking" type="collection">
         <element label="Flight Price" max_length="20" name="u_flight_price" type="currency"/>
+        <element display="true" label="Number" max_length="40" name="number" read_only="true" type="string"/>
         <element label="Customer ID" mandatory="true" max_length="32" name="u_customer_id" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
         <element label="Flight Number" max_length="100" name="u_flight_number" type="string"/>
         <element choice="1" default="New" label="Booking Status" max_length="40" name="u_booking_status" type="choice">
@@ -11,7 +12,7 @@
                 <element dependent_value="400" inactive_on_update="false" label="Refunded" value="refunded"/>
             </choice>
         </element>
-        <element display="true" label="Seat Selection" max_length="50" name="u_seat_selection" type="string"/>
+        <element label="Seat Selection" max_length="50" name="u_seat_selection" type="string"/>
         <element label="GenAI Recommendation" max_length="1000" name="u_genai_recommendation" type="string"/>
         <index name="index">
             <element name="u_customer_id"/>

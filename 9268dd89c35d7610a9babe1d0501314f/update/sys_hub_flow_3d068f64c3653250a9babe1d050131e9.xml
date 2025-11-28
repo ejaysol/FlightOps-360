@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>27800</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from>22494655c3513a10a9babe1d05013121</copied_from>
+        <copied_from_name>Customer Booking Confirmation</copied_from_name>
+        <description>Automated workflow to confirm bookings and send AI recommendations</description>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source/>
+        <internal_name>copy_of_customer_booking_confirmation</internal_name>
+        <label_cache>[{"name":"Created_1.current.u_genai_recommendation","label":"Trigger - Record Created➛Ticket Booking Record➛GenAI Recommendation","reference":"","reference_display":"GenAI Recommendation","type":"string","base_type":"string","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"u_genai_recommendation","usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":[null]}},{"name":"Created_1.current.u_booking_status","label":"Trigger - Record Created➛Ticket Booking Record➛Booking Status","reference":"","reference_display":"Booking Status","type":"choice","base_type":"choice","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"u_booking_status","choices":[{"label":"-- None --","used":false,"image":"","reference":false,"rawLabel":"-- None --","selected":false,"missing":false,"value":"-- None --"},{"label":"Cancelled","used":false,"image":"","reference":false,"rawLabel":"Cancelled","selected":false,"missing":false,"value":"cancelled","parameters":{"name":"x_1603912_flightop_ticket_booking","dependent_values":["300"]}},{"label":"Confirmed","used":false,"image":"","reference":false,"rawLabel":"Confirmed","selected":false,"missing":false,"value":"confirmed","parameters":{"name":"x_1603912_flightop_ticket_booking","dependent_values":["200"]}},{"label":"New","used":false,"image":"","reference":false,"rawLabel":"New","selected":false,"missing":false,"value":"new","parameters":{"name":"x_1603912_flightop_ticket_booking","dependent_values":["100"]}},{"label":"Refunded","used":false,"image":"","reference":false,"rawLabel":"Refunded","selected":false,"missing":false,"value":"refunded","parameters":{"name":"x_1603912_flightop_ticket_booking","dependent_values":["400"]}}],"usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":[null]}},{"name":"Created_1.current.u_flight_price","label":"Trigger - Record Created➛Ticket Booking Record➛Flight Price","reference":"","reference_display":"Flight Price","type":"currency","base_type":"currency","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"u_flight_price","usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":[null]}},{"name":"Created_1.current.u_seat_selection","label":"Trigger - Record Created➛Ticket Booking Record➛Seat Selection","reference":"","reference_display":"Seat Selection","type":"string","base_type":"string","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"u_seat_selection","usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":[null]}},{"name":"2d2f637e-be72-4ddc-8679-2edb7c036693.Record","label":"1 - Look Up Record➛Customer Profile Record","reference":"x_1603912_flightop_customer_profile","reference_display":"Customer Profile","type":"reference","base_type":"reference","usedInstances":{},"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"Created_1.current.u_customer_id","label":"Trigger - Record Created➛Ticket Booking Record➛Customer ID","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"u_customer_id","usedInstances":{"2d2f637e-be72-4ddc-8679-2edb7c036693":["conditions"],"66714d0e-0c8f-4551-b8d8-514d164bc34c":[null]}},{"name":"Created_1.current","label":"Trigger - Record Created➛Ticket Booking Record","reference":"x_1603912_flightop_ticket_booking","reference_display":"Ticket Booking","type":"reference","base_type":"reference","usedInstances":{"e5d0162d-9e7c-40a9-a442-f7e066616ac2":["record"],"66714d0e-0c8f-4551-b8d8-514d164bc34c":["record",null]},"attributes":{}},{"name":"Created_1.current.u_customer_id.name","label":"Trigger - Record Created➛Ticket Booking Record➛Customer ID➛Name","reference":"","reference_display":"Name","type":"string","base_type":"string","parent_table_name":"sys_user","column_name":"name","usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":["ah_to",null]}},{"name":"Created_1.current.u_flight_number","label":"Trigger - Record Created➛Ticket Booking Record➛Flight Number","reference":"","reference_display":"Flight Number","type":"string","base_type":"string","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"u_flight_number","usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":["ah_subject",null]}},{"name":"Created_1.table_name","label":"Trigger - Record Created➛Ticket Booking Table","reference":"x_1603912_flightop_ticket_booking","reference_display":"Ticket Booking","type":"table_name","base_type":"table_name","usedInstances":{},"attributes":{"test_input_hidden":"true"}},{"name":"Created_1.current.number","label":"Trigger - Record Created➛Ticket Booking Record➛Number","reference":"","reference_display":"Number","type":"string","base_type":"string","parent_table_name":"x_1603912_flightop_ticket_booking","column_name":"number","usedInstances":{"66714d0e-0c8f-4551-b8d8-514d164bc34c":[null]}},{"name":"2d2f637e-be72-4ddc-8679-2edb7c036693.Record.u_loyalty_status","label":"1 - Look Up Record➛Customer Profile Record➛Loyalty Status","reference":"","reference_display":"Loyalty Status","type":"choice","base_type":"choice","parent_table_name":"x_1603912_flightop_customer_profile","column_name":"u_loyalty_status","choices":[{"label":"-- None --","used":false,"image":"","reference":false,"rawLabel":"-- None --","selected":false,"missing":false,"value":""},{"label":"Bronze","used":false,"image":"","reference":false,"rawLabel":"Bronze","selected":false,"missing":false,"value":"bronze","parameters":{"name":"x_1603912_flightop_customer_profile","dependent_values":[""]}},{"label":"Silver","used":false,"image":"","reference":false,"rawLabel":"Silver","selected":false,"missing":false,"value":"silver","parameters":{"name":"x_1603912_flightop_customer_profile","dependent_values":[""]}},{"label":"Gold","used":false,"image":"","reference":false,"rawLabel":"Gold","selected":false,"missing":false,"value":"gold","parameters":{"name":"x_1603912_flightop_customer_profile","dependent_values":[""]}},{"label":"Platinum","used":false,"image":"","reference":false,"rawLabel":"Platinum","selected":false,"missing":false,"value":"platinum","parameters":{"name":"x_1603912_flightop_customer_profile","dependent_values":[""]}}],"usedInstances":{"6d5a4f2c-d6a8-4644-aab5-5b30d7b87a98":["condition"],"79ea3e22-2cfb-4546-93c1-5dae915fefa1":["condition"],"b8fba03a-82f0-4cf2-8c88-82ebf1796886":["condition"]}}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>Copy of Customer Booking Confirmation</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:29</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3d068f64c3653250a9babe1d050131e9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Copy of Customer Booking Confirmation</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sys_hub_flow_3d068f64c3653250a9babe1d050131e9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <type>flow</type>
+        <updation_source/>
+        <version>2</version>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_variable_value action="delete_multiple" query="document_key=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=3d068f64c3653250a9babe1d050131e9^sys_idNOT IN71068f64c3653250a9babe1d050131ee"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>3d068f64c3653250a9babe1d050131e9</id>
+        <name>Copy of Customer Booking Confirmation</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:29</sys_created_on>
+        <sys_id>71068f64c3653250a9babe1d050131ee</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:29</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=71068f64c3653250a9babe1d050131ee"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=3d068f64c3653250a9babe1d050131e9^sys_idNOT IN4e06cf64c3653250a9babe1d0501312a,8206cf64c3653250a9babe1d05013106"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,test_input_hidden=true,uiType=table_name</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>table_name</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">table_name</internal_type>
+        <label>Table Name</label>
+        <mandatory>false</mandatory>
+        <max_length>200</max_length>
+        <model display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</model>
+        <model_id>3d068f64c3653250a9babe1d050131e9</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_3d068f64c3653250a9babe1d050131e9</name>
+        <next_element/>
+        <order>101</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:29</sys_created_on>
+        <sys_id>4e06cf64c3653250a9babe1d0501312a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:29</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=4e06cf64c3653250a9babe1d0501312a"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=document_id</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent>table_name</dependent>
+        <dependent_on_field>table_name</dependent_on_field>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>current</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">document_id</internal_type>
+        <label>Record</label>
+        <mandatory>true</mandatory>
+        <max_length>200</max_length>
+        <model display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</model>
+        <model_id>3d068f64c3653250a9babe1d050131e9</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_3d068f64c3653250a9babe1d050131e9</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:29</sys_created_on>
+        <sys_id>8206cf64c3653250a9babe1d05013106</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:29</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>true</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=8206cf64c3653250a9babe1d05013106"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=3d068f64c3653250a9babe1d050131e9^sys_idNOT IN4206cf64c3653250a9babe1d0501317a"/>
+    <sys_hub_trigger_instance_v2 action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <name>Created</name>
+        <published_version/>
+        <remote_sys_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4206cf64c3653250a9babe1d0501317a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <trigger_definition display_value="Created">798916a0c31322002841b63b12d3ae7c</trigger_definition>
+        <trigger_inputs>H4sIAAAAAAAA/9VY227jNhD9FUFPLeACuvgS5203yaIBthvA8bYPaSBQImkToUlXopS4i/x7h7pZluRbrGydFwMiKc7h0ZkzQz/8MDnyCTcvzSnyOTF7JhOKhALx6WpJYFjpYU+ghZ5bIIGRkuHKvFRhTHomDeViShZLjhQspohHMChDTELz0u6ZCeIxuV9Ftxh2gvfTbfI9zXwanl88e2i5Y9vxKGezuZJLT7HgiSjPl/KJiRmsxSyCKKs/81em6bzxuZwP5ozjkAjz8uGxZy5RCKGUhvGjNsU0loAGaOwQK3Bt13Esy7no2/7Q9W0Hu4hYFmxY56WGXbXQsz44eVFEYIJLThrMhQThO8FX5Yo5EJ+xtEAvEfsXdr+w9DpKAHtAsrny0csJyYaDuWQBuVsqJkU2kuHMJiWPF+Jbhl9TSSiKuSqohJE4gv3IUkPWIHJE9H4unydFwC9MpKfLJ7kMEC+fkFIh82NFIk04ZRyo9zJuIhmHKfrJzdXd5Nr769P06vebiTe5uZ9Obq+mN9fma3ou759Y75ghzLF42XFey+//hRGuP2DsRQQp+OEkSA/dM6MgZEv1CR6TQouvvbW+r6TALF9a03hQTEWbGi942CVyy9oq86ASsZB6XEjaixRScfR3bFkuFuT5aAkPhwhhgrZI2KcVCVeP3oJNtbBQPd4uMecjh6i5b1n/k55zr3qrnBcSE3693s6EydkMBM7EMlaarWckVOQp6SGMvQqPeilg2qfv7GxNke8XdRgL2MIrv1BT2imRJaNfWQQHeIAULdhKt4R5+jXfchILQ8KnhB8jiEMgSxmF6dHbBZrlHNP7NPcqsqDfo+rTHyyKtDevUZdBU1YaMctwIC+jOFIWOzox+GOXed0kPamRWStWR+e2bVPqE+pYI53ZtuX61LZG1gBR7FpW4FRyuwlmK0pVk8S75PhxGR6lYuQHSK9OcQ7eqmbDQTJKNjVYkKAlkhvJVTfQ7I6gORpazRDdoxyxlGU2fL2pzl1H67gxQDhB8AY+1Bj1ggMckHL5DGb8BvfzUfA0C2UscN2O9J4GE8Z6hfFLzt+vHTohlSHZDWBzxTl54Jr2QrhIrDpwP5fa/pj0iQWm54Lf+YPx2A+QQ+loOCKOXXO/NYxWbB/C9faoLWmT6zYHbBVO0qa3I7zvBIANHzwa4OkOmAuz1f+yuY/hdM9zIjyAGnpce1nD8GacYVLMdZvtjdDJOr9PzXh6MQ4G9mgUjOAeAxlP+8RHdt8ZoPFo6F4MahnfgLILpmph5qfcbqJVlALZ4gbfs6nzurm/p2wjolT2X82xVVpAH5u+g7IglUqpP4uRmooMjW9S/Ha7XmfcEyiA6RW3q3J9CAr9YY33heFLNW/0CxD6M4xvhNZ95hZWzu5KVRNJsnnWk69UpH8xGFO33WLouM1i1mC2wzz79uLADEm25lpbn3Go4JPWvNnaGLxBwjWZVDuGHS1NV6TYnZPivB8p7sltVJGLW++RbwH7gUpY2lecUsd0TOJJWjXva2nAhAFBDEaN/L9Fgg1/Zag5AUo59MsQ0NDRT3XtahVpQikV/HOBZB14o5rBsJE3UOdXqGpS6PYGTPAIDQbuln54XL8BtwHag/fsy9bRWZG0JdnO2nXcvvU9W6tXRbKbijiwLnV66vbidNqpW8vTvlOfXnh23d9bUJxpSXn8D6BnJ6ZvHwAA</trigger_inputs>
+        <trigger_outputs/>
+        <trigger_type>record_create</trigger_type>
+        <updation_source/>
+    </sys_hub_trigger_instance_v2>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=3d068f64c3653250a9babe1d050131e9^sys_idNOT IN0e06cf64c3653250a9babe1d0501315c,0e06cf64c3653250a9babe1d05013164,4a06cf64c3653250a9babe1d05013161,4e06cf64c3653250a9babe1d05013165,8a06cf64c3653250a9babe1d05013162,8e06cf64c3653250a9babe1d0501315f,8e06cf64c3653250a9babe1d0501316a,ca06cf64c3653250a9babe1d05013163"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Look Up Record">9d09f99587003300663ca1bb36cb0ba3</action_type>
+        <action_type_parent display_value="Look Up Record">b93f42810b30030085c083eb37673a63</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>9d09f99587003300663ca1bb36cb0ba3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>0e06cf64c3653250a9babe1d0501315c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>2d2f637e-be72-4ddc-8679-2edb7c036693</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VYTW/jNhD9K4LOjiv527kVDgwssN0Um3Qv2wVBiVRMlCa1FJXEMfzfdyhSsmArttUqQIIeORySb4bvDUf6vvUZ8a99Mg/myXw+nk2DYDgMgslkGOMwioaTOAoiPPJ7vsBrCp4aR5zC8BHz3IyfUTgJhvNwgBLOHlZapijOMy3XVKFUyYQV3oRlKcebb27Rwnl4f1Ye8Ypxoqjwr7//6PkpVnCcpsq/3h5MXYqX44hycL13gA/w601aDVExZ22f68u8L3ZCKmKgBD2fPmsqCAUMCeYZ7flrLAjWUm0qi6KY3Aq+N6yY0LCjb5yfM/YC584C45dQiCqmdq4aIpcsa05usMZ3WuWxzpVzjVeSxTSz+SA0wTnXi7rNOtymmklhl9iw7WrJ87X4YtPhVxuUdwOWPAMQNDWBGuQujORuJZ++liiXTBQ5cZNcxphXI6y1YlGuDZ6tTzldw0ZojdOUiQdDi0dWLAYs6/4Dh0E/4fIJDs3Yg+jj2ADvQ15xfwn2m8L8DStmovgDtoHFAIhxYAiyV5jJXBWpfEQxB3qZCYVFZvfydz0/22QLjrNsHzmkHP3MDW6bBxcxskkzS2LFUv07bPFIXXC7XimZ8UkKzveUi6UgzKDIarrJK5n8ncMGZLtdAHE0JSjsx7mCHOv+3gcxstsd6+jfbdJSaufjLKW2qAfaFLwT3ZHtc9MGTnRhZ6IbBcFHkh0c/v5U115HNgVnxBSSkyQjez5lUmlkc1lT07E0WvP8Agglz28NM71o8xoqR/OEUU6a3palmTh4Wwb/z7flXZIcABFkb48JzkTRKADQjtlfGk0gdQKZYYNWdpVaxiepGoUHvCzouNdKYcNZfKwZ7GnpvbRWzgVwSuXcwdnevcXTALF8HwqKHb4NpdEJZtiZYIaDbgSzrcKsEtmQ87KXNLdZ+r8Yf3zoD5StLQh3TYJsdWbY9szB7ljww1aKr5PNzty8wrmOm85XFNx7y5KxgqXuPGQVjJ4YeaB6f3rpRaR+wvyfpnnHOFReVBHeGzSw4clvqKjWwLIEreHmWAp9tqIxkCNDWFGUyFwQ5DrsWmsLN5kwlWnnfFxovlLQj/AkCNPTK+oV3l7l3fLhPh9HmcpPiVcG4k7LPAjEKwLxqkDahd2maI06bGa7LlpLzHhxG/DxlNaukyol1SuF68xFnmDEhVXtQlBhp6D+e9lrkkBj+TuD9UN8iXdWmuoN0UXiO9spxRRHowGeTIdhGARhQKbBbDoNZ5MomeDpKNmLHaFMxFCWAWICnAOcqORYSZjguJDZ2ty2Yl2AquTyjRTm034w1Z6BBUTxSljngbvKFEnJKRYHpekeHpzflg6/I/743ZWnD/GDK2f3h5m2psZcv1UDkrO/BPuZ00+GYjMaDGYhia9m03B6NUrI5GpO8PgKz6PxdEhoPEq67Cl+/AINxyBTSRYAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=0e06cf64c3653250a9babe1d0501315c"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create or Update Record">ab575ae253b3230034c6ddeeff7b12f1</action_type>
+        <action_type_parent display_value="Create or Update Record">e057d2e253b3230034c6ddeeff7b1261</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>ab575ae253b3230034c6ddeeff7b12f1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>9</order>
+        <parent_ui_id>b8fba03a-82f0-4cf2-8c88-82ebf1796886</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>0e06cf64c3653250a9babe1d05013164</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>3897f01d-6207-4e2e-82b7-3304c71f69d5</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/9VU207cMBD9FePnaJXdZaHdtxYELy1IBfECKJrEk8TCsVNfFraIf+84lwVttxckVIlHz8Vzzhn7XD9yKfiSzw4XhwvA2WKez2fzNJ3vFwdCIJblYT6dlfs84RoapEoPucKsOyR8BSrE4EM2PUjnH6ezrFSyqr1pMy+LO/RZbsyd1BXVCulaBeuroeWyy7PPm3xRSyUsar68vk14C5ZGeLR8+biV+lfACnJUcVJEzM56xLtY+HW7M/Zl1wXGiggqTTg+eNQCCU0JymHCG9ACvLFrvvQ2UMAiiHOt1puKWmpPF/JY++DkDxr7IY11JRK9Avvc5pgNmvXh8hg8XNDNhQ92KC1qIwt0vTACSwjKH72M9QXnrZdG9y0dzaHbqNDos14SvrlgXBFFgiMQ2EaeEflAo7yozf23EeWJ1J0kQ1KZAtTmBN5bmQcf8TzyIC93aN1HR7WjdBREhQ3NzBpoW3ogWWvNSnZzCHYzqRQdJqUy94TPyUpPoIgcJ7QBmJxQ/LgLX4GVcdZXuoaanxLu1u5IgXPPtEnv7HuIoHsRBrpZr1hsKaxs/ScasMKB2VMy/pz8jw8Rnt9cKVEJ9+LXhKxCDTKzSIyILEEnBjeBLhHslB6PZ94wh8jWJjCoQOqEXUi1QssabHK0e+zIaBdlYSbEICgW2sqCQNZCcQcVstJY1lpsZGiYkJq0ZKZ7Dm4Su73UgYrUOibupa9ZcHEsjS9qdmqUYM6DD27v1z/8/gi80mT+vtvRZE7G5W4vezQXbEg5j1m//C2DGZLsakgOJjN9K5M5WKTpe/KZntkb2My26v/RamhY69D6rK8ex73egV545W+86PYn7HLslMcHAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=0e06cf64c3653250a9babe1d05013164"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create or Update Record">ab575ae253b3230034c6ddeeff7b12f1</action_type>
+        <action_type_parent display_value="Create or Update Record">e057d2e253b3230034c6ddeeff7b1261</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>ab575ae253b3230034c6ddeeff7b12f1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>3</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4a06cf64c3653250a9babe1d05013161</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>6a90fe96-1af9-47cb-9028-d48d44394fe5</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/91UXU/bMBT9K56foyhtadn6toH6tIE0EHsAFN0kN42FY2e2U5oh/vuu46SgrvtAQpO2R9/Pc47vvdcPXBR8yafH8+M54HQ+y2bTWZLMjvJFUSCW5XE2mZZHPOIKaqRIB5nEtH9EfAOy9cZtOlkks3eTaVpKsa6cblIn8jt0aab1nVBrii2EbSR0V0PKZe9nH3b+vBKyMKj48vo24g0YauHQ8OXDnutPAUvIUPpOHjE7C4gPsXBdc9D28VABbQoPKok4bh2qAglNCdJixGtQBThtOr50piWDQSjOlex2EZVQjgpyH7u14hu1fZv4uBKJXo7Bt3umg2bBXJ6CgwuqnLvWDKF5pUWONghTYAmtdCfPbSHgvHFCq5DS0xyytWxrdRYk4bsC4xeRpbUEAhvP0yMfaJQXlb7/PKJcCdVLMjilzkHuXuCcEVnrPJ4H3orLA1oH66i2l46MKLGmnmkNTUMDkjZGb0Tfh2DX8VrSIy6lvid8VqxVDLnnGNMPQLwi+2lvvgIjfK9PVIaSHyNuO3siwdon2qR3+rX1oIMIA900KOZTciMa954abHBg9hiNm5P9chDhaeZKgbKwz7amTdeoQKQGiRGRJejE4KalIsVlBeqOdbplpTaMflFbUoGt+vU6byybLZI37AsySQvkY+7BFMxpFnTysT4ZtzlKSWSYRbOhSYjZSYV5X9kwrEHIvsGwpqxARybLaJIZ6WW1AkljSpUNbFAyJ6h1BpYsWoUiUncgXcesA9fa+MdN/19pvvBg/X5OxoO1Ggdlf3DGQ4U16eswDYO0d6wGJ7sanMPBmrzWwVrMk+RfulmB2SucrH3V/+LZomYNTbZLQ/TY7uXX7Nnd/cldu/0O6wpzdxMIAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=4a06cf64c3653250a9babe1d05013161"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create or Update Record">ab575ae253b3230034c6ddeeff7b12f1</action_type>
+        <action_type_parent display_value="Create or Update Record">e057d2e253b3230034c6ddeeff7b1261</action_type_parent>
+        <attributes/>
+        <comment>ELSE for Bronze/New Members</comment>
+        <compiled_snapshot>ab575ae253b3230034c6ddeeff7b12f1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>11</order>
+        <parent_ui_id>fc4d00e6-801d-4a4d-b893-d6da00f32ce6</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4e06cf64c3653250a9babe1d05013165</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>0f81d393-b0b7-47c3-abee-a2e3a7db1545</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/9VU204bMRD9FePnVZQLgTZvLZSHqgWpIPpAkTW7nk0svPbWF8gW8e8d7yWgNL0goap99Mx45pwz9rm650ryBZ8ezg/ngNP5LJ9NZ+PxbL84kBKxLA/zybTc5xk3UCFVBsg1ivaQ8VvQMQXXYnIwnr2eTEWp1XIVbC2CKm4wiNzaG2WWVCuVrzU0l/2VizbP3m7yxUpp6dDwxdV1xmtwNCKg44v7rdSfAtaQo06TEmJ22iHexSI09c7Yh10NrJMJ1DjjuA5oJBKaErTHjFdgJATrGr4ILlLAIcgzo5tNxUqZQA15ql179Y3GvhqnuhKJXoFdbnMUvWZduDyGAOfUuQjR9aXFyqoCfSeMxBKiDkdPY13BWR2UNd2VlmZ/2+pYmdNOEr5pMKyIItETCKwTz4S8p1Ger+zdpwHliTKtJH1S2wL05gQhOJXHkPDc86gudmjdRQe1k3QURI0VzRQV1DU9EFE7e6vaOQS7Gi01HUaltneEz6ulGUGROI5oAzA6ofhxG74Ep9Ksj9SGLj9k3Df+SIP3j7RJb/E1JtCdCD1d0SmWrhRO1eENDbjFntlDNvyc/JcPER7fXKlQS//k10SxRANKOCRGRJagE4MvkZrIz6gpiAxyC07usfdWGWajY9o2oEPDSI8lfREWrISG0ctjPoALLBpaQPpSDNeFjp4gsxwNlir4tizWdI80G7F34AybsJpaB0bqMGm1Bsc8CRD2fvyy/zzeZ1rI7zc3WMjJsLrtVQ7WgRUJFVB0q92yjz7JLvtkbyGTl7KQg/l4/D+5SMfsBUxkW/W/aCQ0rPboguiqh3HP95cnTvgTp7n+DkqrOoalBwAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=4e06cf64c3653250a9babe1d05013165"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create or Update Record">ab575ae253b3230034c6ddeeff7b12f1</action_type>
+        <action_type_parent display_value="Create or Update Record">e057d2e253b3230034c6ddeeff7b1261</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>ab575ae253b3230034c6ddeeff7b12f1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id>6d5a4f2c-d6a8-4644-aab5-5b30d7b87a98</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>8a06cf64c3653250a9babe1d05013162</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>70a9a624-52b5-498d-b732-2a815c0840fb</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VU207cMBD9FdfPUZTdZaHdNwriqYWqIKqKomiSTBILx3YdeyFF/HvHuSxou70goUpVHz0XzznH43N1z0XBV3x+sDxYAs6Xi2wxXyTJYi/fLwrEsjzIZvNyj0dcQYNU6SCTmPaHiK9B+hC8S2f7yeLNbJ6WUlS10yZ1Ir9Bl2Za3whVUW0hWiOhuxxbLvo8e7vJ57WQhUXFV1fXETdgaYRDy1f3W6k/BSwhQxkmBcTsdEC8i4XrzM7Yu10XaFsEUEnE8c6hKpDQlCBbjHgDqgCnbcdXznoKWITiTMluU1EL5ehCHmrvWvGNxr5OQl2JRC/HIbc5pqNmQ7g8BgfndHPuvB1L81qLHNtBmAJL8NIdPY0NBWfGCa2Glp7m2K2lb9TpIAnfXDA9EUV8SyDQBJ4B+UijPK/17ccJ5YlQvSRjUuoc5OYEzlmReRfw3HMvLnZoPUQntYN0FESJDc1MGzCGFiQ1Vq9FP4dgN3El6RCXUt8SvlZUKoY8cIzpBSA+ofhxH74EK8Ks93QNNT9EvO3aIwlt+0ib9E6/+gB6EGGkmw6KhZbcCuMOacAaR2YP0fRzsl8uIjzuXClQFu2TX+PTChWI1CIxIrIEnRh88XRJ8QklBZFlkN9E7IOklPINa7DJ0L5in7VnNayRUZGRIigFtmOQ08O3zGmmvWXGYiOoSWqvKmwZrSfFhLbCdSzTYAsSNmaHlGE9pmJ7UMQ6GkT4kJgz8E43lM+3pnpTWaBXYLc1KgZrEDJIHv/46f8Dxs+0sd9vz2RjJ9P6bK/TZF9ICMFhOqzXloWNSXY5Jkcbm72Uje0vk+RfcrKB2QsY2bbqf9HMaJhp0bp0qJ7GPd/jnrjxT9zu+jsFg+1MKQgAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=8a06cf64c3653250a9babe1d05013162"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <attributes/>
+        <comment>Update Booking to Confirmed</comment>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>2</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>8e06cf64c3653250a9babe1d0501315f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>e5d0162d-9e7c-40a9-a442-f7e066616ac2</ui_id>
+        <updation_source/>
+        <values>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</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=8e06cf64c3653250a9babe1d0501315f"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Send Email">c1806bf4a70323008299b39f087901cb</action_type>
+        <action_type_parent display_value="Send Email">98c181d20b100300d97d8bf637673ab5</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>c1806bf4a70323008299b39f087901cb</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>12</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>8e06cf64c3653250a9babe1d0501316a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>66714d0e-0c8f-4551-b8d8-514d164bc34c</ui_id>
+        <updation_source/>
+        <values>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</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=8e06cf64c3653250a9babe1d0501316a"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create or Update Record">ab575ae253b3230034c6ddeeff7b12f1</action_type>
+        <action_type_parent display_value="Create or Update Record">e057d2e253b3230034c6ddeeff7b1261</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>ab575ae253b3230034c6ddeeff7b12f1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <generation_source/>
+        <order>7</order>
+        <parent_ui_id>79ea3e22-2cfb-4546-93c1-5dae915fefa1</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>ca06cf64c3653250a9babe1d05013163</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>fe648bd1-21fe-433f-98f7-194238e77505</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/9VU207cMBD9FWOpb9Equ8uy7b61IPrSgtQiqooiy4nHWQvHTn0BUsS/d5zLgrbbCxKqxFPkmfHMOceTc3FHlaArOlsulgsOs8W8mM/meT7fLw+EAJByWUxncp9m1PAasDLwQgPrDhm95jqm4C2bHuTzN9MZk1pV62AbFlR5BYEV1l4pU2GtUL7RvD0frpx1efJuky/XSgsHhq4uLjPacIcjAji6uttK/StgzQvQaVJCTE56xLtYhLbZGfuwq4F1IoHKMwq3AYwARCO59pDRmhvBg3UtXQUXMeCAi1Oj203FWpmADWmqvfXqB459nac6CUivhD63ObJBsz4sj3jgn7FzGaIbSsu1VSX4XhgBkkcdDh/H+oLTJihr+isdzeG21bE2J70kdNNgfCKMRI8goEk8E/KBhvy8tjefRpTHynSSDEltS643Jx6CU0UMCc8djepsh9Z9dFQ7SYdB0FDjTFbzpsEFYY2z16qbg7DrSaXxMJHa3iA+ryoz4WXiOMEX4JNjjB914XPuVJr1Edvg5fuM+tYfau79A23Um32PCXQvwkCX9YqlK6VTTXiLA65hYHafjX9O8cdF5A87JxVo4R/9NZFVYLhiDpARkkXoyOBbxCbibM3NFWltJNK69HWktCYoE0EQbVuuQ5uR91YLUkNdgNsjX4BsOqVin+RC6UhsKsdRpa4VGOxcQqqo8Rwm5KuNaeZs6YAA/r4qbXsq1TaaCggvcZs84YEs8lfESrn369/8kqk80Xj+/t6j8RyPD769AKPhQI0aBmD9QmyZzpAk50NyMJ7pcxnPwSLPX5L39MyewXq2Vf+P9oPDGg8usL56HPd0V3rkn7/xp8uf7LFHYNsHAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=ca06cf64c3653250a9babe1d05013163"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=3d068f64c3653250a9babe1d050131e9^sys_idNOT IN0206cf64c3653250a9babe1d0501315b,0e06cf64c3653250a9babe1d05013159,4e06cf64c3653250a9babe1d05013157,ce06cf64c3653250a9babe1d05013154"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">bf555164c329fe10a9babe1d05013113</block>
+        <comment/>
+        <connected_to>6d5a4f2c-d6a8-4644-aab5-5b30d7b87a98</connected_to>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Else">1f781bf3c32232002841b63b12d3aee6</logic_definition>
+        <order>10</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>0206cf64c3653250a9babe1d0501315b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>fc4d00e6-801d-4a4d-b893-d6da00f32ce6</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">3b555164c329fe10a9babe1d05013111</block>
+        <comment/>
+        <connected_to>6d5a4f2c-d6a8-4644-aab5-5b30d7b87a98</connected_to>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Else If">666e5545c3e232002841b63b12d3ae99</logic_definition>
+        <order>8</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>0e06cf64c3653250a9babe1d05013159</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>b8fba03a-82f0-4cf2-8c88-82ebf1796886</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1V207bQBD9lWifHcsXSIA3xEVCgiIRxEuLrPHumKy69rp7CbhR/r2zthNQS9VU5bFv2bOzM+ccz1HWTHvXemfv9am18qlhJ58fIyabgNHvNZOCnbAqgSo95inPs1meJUl2dJCWs7xMM5EDQsYi1kCNVMl1I6STuil6IGIrUD5cXFwvLiZXl5NKm8lCqhWayQ3WJRpLRULaVkH3sE8tX0olDI5MWzA0x6FhJ+ufrvZlrqBERaVnW+qT6x75vSbXtQG3zsjmaTxfj10WW1AbEVilScTwxWEjkPhUoCxGrIZGgNOm2yEGQdw26hVYysZROxaKX6z8TgOzw8NQWCFJ5Dhc7o7F6OEAV+fggKh47rwZS/lSS452MEdgBV65s7fYUHDbBqnDEwel2r7WytfNp8ERtmuw/WSEeEsksA1KA/VRR7VY6ue7LctL2fSujJdKc1C7EzjyrvQu8FkzVFhTo6KGtiVHi9bolewfE5c6flJ0iCuln2lo2NwYeCAek7EQXxJ+3sMPYGRQcUNt6PFAswQredFvObUjm5BtImY7e6bA2leR5G7xzQeKg+RRXDH4E55wI1t3SpNXOOrYRPuFJn1nwd7kZb3ORFbN8jlOS5xn0wMh+PRoNj+eZijKOU/y2ew4j++Q06LFvlC6A+W6wjpw3m42X3yS5ML26fk1YR/c/UMzmb6XyffN+psgZn8IYtiCPXOYJMn/IP5zEKUthviM2vrhH5jDxxCmYebOay4tUbsP2NX2Py5cdLRckr+FnrX5GkS9YpsfIuEVSS0HAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">f7555164c329fe10a9babe1d0501310e</block>
+        <comment/>
+        <connected_to>6d5a4f2c-d6a8-4644-aab5-5b30d7b87a98</connected_to>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Else If">666e5545c3e232002841b63b12d3ae99</logic_definition>
+        <order>6</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4e06cf64c3653250a9babe1d05013157</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>79ea3e22-2cfb-4546-93c1-5dae915fefa1</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1Vy27bMBD8FYNnWdAjkWPfAgcpAiQNkAS5tIGwIimbKCWqImlHNfzvXephG62DuqiPvZmzy+XMaAfeEGVNZY1+Uddai0VJZl/ePCJKh+HvDRGMzEgeQB5OaUjjKImjIIiuLsIsibMwYjFwiIhHSig4dlJVMmGEKtMW8MgKpHWFOz36pCQbPfAi4zUWmNCVhOb1ozpdCslq3jOqoMZ5BiuzzS+lUxlKyLjE1vlAcXTfIh9zN03lcG1qUS76830/5XkAVc0cqzDwCH83vGQc+eQgNfdIASUDo+pmh9Qc2GMp98BSlAbHEdf8rsUPfDC6vHSNOUeJlHfF3THtfevg/AYMIBVLja37VrpUgnLdmcN4Dlaa+SHWNTxWTmp3xUAmh9tK2qL83DlCdgOGz4SI1UiCV06po97ryJ+Xav00sLwVZetKX5SKgtydwKB3mTWOz4ZwyQsclBZQVehoWtVqJdrLyKXwFxIPfi7VGh91G+oDdcR9NBb8W8RvWvgVauFUPOCYdn8czQy0oGm7zTgObeJk6xHd6LkErfci0d30u3UUO8m9uLTzx12htajMNb684r2OrXdaOMIjC3aQi80mYlGexBM+zvgkGl8wRsdXyWQ6jjjLJjSIk2Qa+0+c4qL5NpWqAWmaVBswVm+3X20QxGyB0fk9U2edfdY8hsfyeNyovwlh9IcQug04MYNBEPwP4T+HUOi0i06vrX38jBl8c0Hq3tx5TYVGai8Ouxv+x1yhweUS9BBaq/qbE7XHtj8BbM7KEBEHAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">b3555164c329fe10a9babe1d05013108</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Copy of Customer Booking Confirmation">3d068f64c3653250a9babe1d050131e9</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>4</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>ce06cf64c3653250a9babe1d05013154</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <ui_id>6d5a4f2c-d6a8-4644-aab5-5b30d7b87a98</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1VXU/bMBT9K5Wf0yhNaEp5Q0WVkGBMgHgZKLqxHWrNsTN/FLKq/33XSVqqwTTQeNxbfXyv7zkn96gbor1rvLO3+tRa8ajIybeHiAgVMPy9IYKRE1IlUE3mdEKzNM/SJEmPjyZlnpWTlGXAISMRUVBzrKRaMeGEVkUHRGQN0oeL8+XoxoHjNVduVGkz+irBCeXr0SWvS24s1jJhGwnt3Qda6EpIZvjAuwGDUx035GTz29V7dUgoucTSxU7I6KJD/qzQtU3ArTNCPQ7ni+GVmx2oDQusJklE+LPjinHkU4G0PCI1KAZOm3aPGA7sSskXYCWUw+dIKH624icOTKfTUFhxlEh5f7k/FoOVPVydgQOk4qnzZiilKy0ot705jFfgpVscYn3BVROk9i0OSrnr1tLX6kvvCNk/sPtyiHiLJHgTlAbqg47qZqWfrncsl0J1rgyXUlOQ+xM49K70LvDZEC67NShqaBp0tGiMXouuGbnU8aPEQ1xJ/YRDwx7HQAPxGI2FeIn4WQffgRFBxSU+g809zRKsoEW38/gc2sTJNiK2tQsJ1r6IRHeLHz5Q7CUP4oren9BCjWjcKU5e80HHNhoiNIdpNZ0k07dX7yh/Y8EO0rPZpCyt8mzGxyWfpeMjxuj4OJ/Nxyln5YwmWZ7Ps/iaU1y02BdStyBdW1jMj7fb7b1Pkoy9jtinvfuxHL7DjFc5fNugj4Qv/Uv4wpd/Z/aSJPkfvn8On7BFH5lBWzf8E7P3EALUz9x7TYVFarcBO9/9y4WLFpdL0EPoSZvvQdQLtv0Fgpf6ry8HAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=3d068f64c3653250a9babe1d050131e9^sys_idNOT IN0606cf64c3653250a9babe1d05013185,0a06cf64c3653250a9babe1d05013184,4206cf64c3653250a9babe1d05013185,4606cf64c3653250a9babe1d05013184,4e06cf64c3653250a9babe1d05013185,8a06cf64c3653250a9babe1d05013183,8a06cf64c3653250a9babe1d05013185,8e06cf64c3653250a9babe1d05013184,c606cf64c3653250a9babe1d05013185,ca06cf64c3653250a9babe1d05013184"/>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.number}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>0606cf64c3653250a9babe1d05013185</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>62920868-0e40-4146-b09c-157045ec9189</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_flight_number}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>0a06cf64c3653250a9babe1d05013184</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>b31ba830-4c6d-47ae-8bb7-e92a7b8e0384</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_customer_id.name}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4206cf64c3653250a9babe1d05013185</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>62c5d747-b2ac-4fd8-9f5e-13ad73ace97a</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_booking_status}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4606cf64c3653250a9babe1d05013184</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>edf1bb36-6991-4572-98fa-c577431dfbd6</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_customer_id}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>4e06cf64c3653250a9babe1d05013185</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>ca237b8f-74fe-4a4f-b758-6201e5e89ffc</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_flight_price}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>8a06cf64c3653250a9babe1d05013183</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>9845c9cf-954d-40fb-92bd-edb8b6597153</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_genai_recommendation}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>8a06cf64c3653250a9babe1d05013185</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>5f6efb35-d24e-4cdc-8fd6-666bd21498b5</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.u_seat_selection}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>8e06cf64c3653250a9babe1d05013184</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>c61327f0-c15e-46c5-b7de-5af70278f5bd</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>c606cf64c3653250a9babe1d05013185</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>9fca96f5-d54e-4f51-902a-a6ab8d591782</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_pill_compound action="INSERT_OR_UPDATE">
+        <attached_to>3d068f64c3653250a9babe1d050131e9</attached_to>
+        <extra_info/>
+        <order>0</order>
+        <prescription>{{Created_1.current.number}}</prescription>
+        <source_ui_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:30</sys_created_on>
+        <sys_id>ca06cf64c3653250a9babe1d05013184</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:30</sys_updated_on>
+        <transform_compositions>[]</transform_compositions>
+        <transform_definition_id/>
+        <ui_id>4a727533-d244-475b-8843-c7dab354d7cf</ui_id>
+    </sys_hub_pill_compound>
+    <sys_hub_flow_variable action="delete_multiple" query="model=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>current</element>
+        <help/>
+        <hint/>
+        <label>Record</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_3d068f64c3653250a9babe1d050131e9</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:29</sys_created_on>
+        <sys_id>4206cf64c3653250a9babe1d05013129</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:29</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>table_name</element>
+        <help/>
+        <hint/>
+        <label>Table Name</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_3d068f64c3653250a9babe1d050131e9</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-28 10:17:29</sys_created_on>
+        <sys_id>4206cf64c3653250a9babe1d0501312e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-28 10:17:29</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_3d068f64c3653250a9babe1d050131e9"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_3d068f64c3653250a9babe1d050131e9"/>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=3d068f64c3653250a9babe1d050131e9"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=3d068f64c3653250a9babe1d050131e9"/>
+</record_update>

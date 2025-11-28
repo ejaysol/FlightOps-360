@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[function FlightOpsFooterController() {
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flightops-footer {&#13;
+  background: #0A1F44;&#13;
+  color: #F4F7FB;&#13;
+  padding: 32px 0;&#13;
+}&#13;
+.flightops-footer__link {&#13;
+  color: #FFB347;&#13;
+  margin-left: 16px;&#13;
+}&#13;
+.flightops-footer__link:hover {&#13;
+  color: #D7263D;&#13;
+}&#13;
+.flightops-footer__contact i {&#13;
+  margin-right: 6px;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data>[{"label":"Privacy","url":"/privacy"},&#13;
+ {"label":"Terms","url":"/terms"},&#13;
+ {"label":"Status","url":"https://status.flightops360.com"}]</demo_data>
+        <description>Branded footer with quick links and contact info</description>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>flightops_footer</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>FlightOps Footer</name>
+        <option_schema>brand_name, tagline, email, phone, links_json</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.brandName = options.brand_name || 'FlightOps 360';
+  data.tagline = options.tagline || 'AI-enhanced booking & crew operations';
+  data.email = options.email || 'support@flightops360.com';
+  data.phone = options.phone || '1-800-FLIGHT-360';
+  data.year = new GlideDateTime().getYearLocalTime();
+  try {
+    data.links = JSON.parse(options.links_json || '[]');
+  } catch (e) {
+    data.links = [];
+  }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 14:02:59</sys_created_on>
+        <sys_id>dace0f49c359b610a9babe1d05013196</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlightOps Footer</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sp_widget_dace0f49c359b610a9babe1d05013196</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 14:02:59</sys_updated_on>
+        <template><![CDATA[<footer class="flightops-footer" role="contentinfo">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>{{c.data.brandName}}</h4>
+        <p>{{c.data.tagline}}</p>
+        <p class="flightops-footer__contact">
+          <i class="fa fa-envelope"></i> {{c.data.email}} &nbsp;
+          <i class="fa fa-phone"></i> {{c.data.phone}}
+        </p>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <a ng-repeat="link in c.data.links"
+           ng-href="{{link.url}}"
+           class="flightops-footer__link">
+          {{link.label}}
+        </a>
+        <p class="flightops-footer__copyright">© {{c.data.year}} FlightOps 360. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</application>
+        <file_path/>
+        <instance_id>dde2881d3b706ad4986d048aa4e45a23</instance_id>
+        <instance_name>dev320909</instance_name>
+        <name>sp_widget_dace0f49c359b610a9babe1d05013196</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function FlightOpsFooterController() {
+  var c = this;
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.flightops-footer {&amp;#13;
+  background: #0A1F44;&amp;#13;
+  color: #F4F7FB;&amp;#13;
+  padding: 32px 0;&amp;#13;
+}&amp;#13;
+.flightops-footer__link {&amp;#13;
+  color: #FFB347;&amp;#13;
+  margin-left: 16px;&amp;#13;
+}&amp;#13;
+.flightops-footer__link:hover {&amp;#13;
+  color: #D7263D;&amp;#13;
+}&amp;#13;
+.flightops-footer__contact i {&amp;#13;
+  margin-right: 6px;&amp;#13;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data&gt;[{"label":"Privacy","url":"/privacy"},&amp;#13;
+ {"label":"Terms","url":"/terms"},&amp;#13;
+ {"label":"Status","url":"https://status.flightops360.com"}]&lt;/demo_data&gt;&lt;description&gt;Branded footer with quick links and contact info&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;flightops_footer&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;FlightOps Footer&lt;/name&gt;&lt;option_schema&gt;brand_name, tagline, email, phone, links_json&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+  data.brandName = options.brand_name || 'FlightOps 360';
+  data.tagline = options.tagline || 'AI-enhanced booking &amp; crew operations';
+  data.email = options.email || 'support@flightops360.com';
+  data.phone = options.phone || '1-800-FLIGHT-360';
+  data.year = new GlideDateTime().getYearLocalTime();
+  try {
+    data.links = JSON.parse(options.links_json || '[]');
+  } catch (e) {
+    data.links = [];
+  }
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-11-17 14:02:59&lt;/sys_created_on&gt;&lt;sys_id&gt;dace0f49c359b610a9babe1d05013196&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;FlightOps Footer&lt;/sys_name&gt;&lt;sys_package display_value="FlightOps 360" source="x_1603912_flightop"&gt;9268dd89c35d7610a9babe1d0501314f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="FlightOps 360"&gt;9268dd89c35d7610a9babe1d0501314f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_dace0f49c359b610a9babe1d05013196&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-11-17 14:02:59&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;footer class="flightops-footer" role="contentinfo"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-md-6"&gt;
+        &lt;h4&gt;{{c.data.brandName}}&lt;/h4&gt;
+        &lt;p&gt;{{c.data.tagline}}&lt;/p&gt;
+        &lt;p class="flightops-footer__contact"&gt;
+          &lt;i class="fa fa-envelope"&gt;&lt;/i&gt; {{c.data.email}} &amp;nbsp;
+          &lt;i class="fa fa-phone"&gt;&lt;/i&gt; {{c.data.phone}}
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-6 text-md-right"&gt;
+        &lt;a ng-repeat="link in c.data.links"
+           ng-href="{{link.url}}"
+           class="flightops-footer__link"&gt;
+          {{link.label}}
+        &lt;/a&gt;
+        &lt;p class="flightops-footer__copyright"&gt;© {{c.data.year}} FlightOps 360. All rights reserved.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1975004740</payload_hash>
+        <record_name>FlightOps Footer</record_name>
+        <reverted_from/>
+        <source>8d6f02c5c315b610a9babe1d050131fc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 14:02:59</sys_created_on>
+        <sys_id>75205741c31db610a9babe1d050131cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19a922044900000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 14:02:59</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>b520d7493a99b610d9fc18d4eea6f87c</update_guid>
+        <update_guid_history>b520d7493a99b610d9fc18d4eea6f87c:1975004740</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="FlightOps Footer">3712d345c31db610a9babe1d050131a6</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 14:11:35</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>e6a6a580909246aeaa7359468c627ce4</sys_id>
+        <sys_metadata>dace0f49c359b610a9babe1d05013196</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlightOps Footer</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_scope_delete display_value="">08d100301ab24d6485b9eced5bf62f31</sys_scope_delete>
+        <sys_update_name>sp_widget_dace0f49c359b610a9babe1d05013196</sys_update_name>
+        <sys_update_version display_value="sp_widget_dace0f49c359b610a9babe1d05013196">75205741c31db610a9babe1d050131cc</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 14:11:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
