@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1603912_flightop.FlightOpsGeminiIntegration</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Simulated Gemini AI integration for personalized flight booking recommendations</description>
+        <mobile_callable>false</mobile_callable>
+        <name>FlightOpsGeminiIntegration</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[/**
+ * ====================================================================
+ * FlightOps 360 - REAL Gemini AI Integration Script Include
+ * ====================================================================
+ * Purpose: Generate personalized booking recommendations using Google Gemini AI
+ * Author: FlightOps 360 Development Team
+ * Created: December 2024
+ * Updated: Now using actual Gemini 2.0 Flash API
+ * 
+ * Usage Example:
+ *   var gemini = new FlightOpsGeminiIntegration();
+ *   var recommendation = gemini.generateRecommendation(userSysId, bookingGR);
+ *   gs.info(recommendation);
+ * ====================================================================
+ */
+
+var FlightOpsGeminiIntegration = Class.create();
+
+FlightOpsGeminiIntegration.prototype = {
+    
+    /**
+     * Constructor
+     */
+    initialize: function() {
+        // Gemini API Configuration
+        this.GEMINI_API_KEY = 'AIzaSyDHxAQrnesGOyFp5jGpaN0or7aDP94cHz0';
+        this.GEMINI_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
+        
+        // Loyalty tier constants
+        this.LOYALTY_TIERS = {
+            BRONZE: 'bronze',
+            SILVER: 'silver',
+            GOLD: 'gold',
+            PLATINUM: 'platinum'
+        };
+        
+        this.TRIP_THRESHOLDS = {
+            SILVER_TO_GOLD: 20,
+            GOLD_TO_PLATINUM: 50,
+            FREQUENT_FLYER: 50
+        };
+    },
+    
+    /**
+     * ================================================================
+     * MAIN METHOD: Generate Personalized Recommendation
+     * ================================================================
+     * Now powered by REAL Gemini AI!
+     * 
+     * @param {String} userID - sys_id of the customer
+     * @param {GlideRecord} bookingRecord - The booking record
+     * @return {String} - AI-generated personalized recommendation
+     */
+    generateRecommendation: function(userID, bookingRecord) {
+        
+        // Input validation
+        if (!userID || !bookingRecord) {
+            gs.warn('FlightOps Gemini AI: Missing required parameters');
+            return this._getDefaultRecommendation();
+        }
+        
+        try {
+            // Get customer profile
+            var customerProfile = this._getCustomerProfile(userID);
+            
+            // If no profile, return new customer message
+            if (!customerProfile) {
+                gs.info('FlightOps Gemini AI: New customer detected - ' + userID);
+                return this._getNewCustomerRecommendation();
+            }
+            
+            // Build context for Gemini AI
+            var context = this._buildCustomerContext(customerProfile, bookingRecord);
+            
+            // Call Gemini AI to generate recommendation
+            var aiRecommendation = this._callGeminiAPI(context);
+            
+            // If AI call fails, fallback to rule-based
+            if (!aiRecommendation) {
+                gs.warn('FlightOps Gemini AI: API call failed, using fallback');
+                return this._generateFallbackRecommendation(
+                    customerProfile.loyaltyStatus,
+                    customerProfile.historicalTrips,
+                    customerProfile.preferredUpgrade
+                );
+            }
+            
+            // Log successful AI generation
+            this._logRecommendation(userID, customerProfile.loyaltyStatus, 'AI');
+            
+            return aiRecommendation;
+            
+        } catch (error) {
+            gs.error('FlightOps Gemini AI Error: ' + error.message);
+            return this._getDefaultRecommendation();
+        }
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Build Customer Context for AI
+     * ================================================================
+     * Prepares detailed customer information for Gemini
+     */
+    _buildCustomerContext: function(profile, bookingRecord) {
+        
+        var context = {
+            loyaltyTier: profile.loyaltyStatus,
+            totalTrips: profile.historicalTrips,
+            preferredUpgrade: profile.preferredUpgrade,
+            flightNumber: bookingRecord.getValue('flight_number'),
+            seatSelection: bookingRecord.getValue('seat_selection') || 'Not selected',
+            price: bookingRecord.getValue('flight_price') || 'N/A'
+        };
+        
+        // Calculate trips to next tier
+        switch(profile.loyaltyStatus) {
+            case this.LOYALTY_TIERS.BRONZE:
+                context.nextTier = 'Silver';
+                context.tripsToNextTier = Math.max(0, 10 - profile.historicalTrips);
+                break;
+            case this.LOYALTY_TIERS.SILVER:
+                context.nextTier = 'Gold';
+                context.tripsToNextTier = Math.max(0, 20 - profile.historicalTrips);
+                break;
+            case this.LOYALTY_TIERS.GOLD:
+                context.nextTier = 'Platinum';
+                context.tripsToNextTier = Math.max(0, 50 - profile.historicalTrips);
+                break;
+            case this.LOYALTY_TIERS.PLATINUM:
+                context.nextTier = 'Elite (Already at top tier)';
+                context.tripsToNextTier = 0;
+                break;
+        }
+        
+        return context;
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Call Gemini AI API
+     * ================================================================
+     * Makes HTTP request to Google Gemini 2.0 Flash
+     */
+    _callGeminiAPI: function(context) {
+        
+        try {
+            // Build the prompt for Gemini
+            var prompt = this._buildGeminiPrompt(context);
+            
+            // Prepare request body
+            var requestBody = {
+                "contents": [{
+                    "parts": [{
+                        "text": prompt
+                    }]
+                }],
+                "generationConfig": {
+                    "temperature": 0.7,
+                    "topK": 40,
+                    "topP": 0.95,
+                    "maxOutputTokens": 300
+                }
+            };
+            
+            // Create HTTP request
+            var request = new sn_ws.RESTMessageV2();
+            request.setEndpoint(this.GEMINI_ENDPOINT + '?key=' + this.GEMINI_API_KEY);
+            request.setHttpMethod('POST');
+            request.setRequestHeader('Content-Type', 'application/json');
+            request.setRequestBody(JSON.stringify(requestBody));
+            
+            // Execute request
+            gs.info('FlightOps Gemini AI: Calling Gemini API...');
+            var response = request.execute();
+            var httpStatus = response.getStatusCode();
+            
+            // Check response status
+            if (httpStatus != 200) {
+                gs.error('FlightOps Gemini AI: API returned status ' + httpStatus);
+                gs.error('Response: ' + response.getBody());
+                return null;
+            }
+            
+            // Parse response
+            var responseBody = response.getBody();
+            var jsonResponse = JSON.parse(responseBody);
+            
+            // Extract AI-generated text
+            if (jsonResponse.candidates && 
+                jsonResponse.candidates.length > 0 && 
+                jsonResponse.candidates[0].content &&
+                jsonResponse.candidates[0].content.parts &&
+                jsonResponse.candidates[0].content.parts.length > 0) {
+                
+                var aiText = jsonResponse.candidates[0].content.parts[0].text;
+                gs.info('FlightOps Gemini AI: Successfully generated recommendation');
+                return aiText.trim();
+            }
+            
+            gs.warn('FlightOps Gemini AI: Unexpected response format');
+            return null;
+            
+        } catch (error) {
+            gs.error('FlightOps Gemini AI API Error: ' + error.message);
+            return null;
+        }
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Build Gemini Prompt
+     * ================================================================
+     * Creates the instruction prompt for Gemini AI
+     */
+    _buildGeminiPrompt: function(context) {
+        
+        var prompt = "You are a friendly AI assistant for FlightOps 360 airline. ";
+        prompt += "Generate a personalized flight booking confirmation message for a customer.\n\n";
+        
+        prompt += "CUSTOMER DETAILS:\n";
+        prompt += "- Loyalty Tier: " + context.loyaltyTier.toUpperCase() + "\n";
+        prompt += "- Total Trips with us: " + context.totalTrips + "\n";
+        prompt += "- Preferred Upgrade: " + context.preferredUpgrade + "\n";
+        prompt += "- Next Tier: " + context.nextTier + "\n";
+        if (context.tripsToNextTier > 0) {
+            prompt += "- Trips needed for next tier: " + context.tripsToNextTier + "\n";
+        }
+        prompt += "\n";
+        
+        prompt += "CURRENT BOOKING:\n";
+        prompt += "- Flight Number: " + context.flightNumber + "\n";
+        prompt += "- Seat: " + context.seatSelection + "\n";
+        prompt += "- Price: $" + context.price + "\n\n";
+        
+        prompt += "LOYALTY TIER BENEFITS:\n";
+        if (context.loyaltyTier === 'platinum') {
+            prompt += "- Complimentary lounge access\n";
+            prompt += "- Priority boarding\n";
+            prompt += "- Automatic complimentary upgrades (when available)\n";
+            prompt += "- 50% bonus points on all bookings\n";
+        } else if (context.loyaltyTier === 'gold') {
+            prompt += "- 50% off lounge access\n";
+            prompt += "- Priority check-in\n";
+            prompt += "- 25% bonus points on bookings\n";
+        } else if (context.loyaltyTier === 'silver') {
+            prompt += "- Meal upgrade packages available\n";
+            prompt += "- Earn points on every flight\n";
+        } else {
+            prompt += "- Earn 1 point per dollar spent\n";
+            prompt += "- Access to member-only offers\n";
+        }
+        prompt += "\n";
+        
+        prompt += "INSTRUCTIONS:\n";
+        prompt += "Write a warm, personalized 2-3 sentence recommendation message that:\n";
+        prompt += "1. Thanks the customer appropriately for their loyalty tier\n";
+        prompt += "2. Mentions relevant benefits they can enjoy\n";
+        prompt += "3. If applicable, encourages them toward the next tier\n";
+        prompt += "4. Keeps a friendly, professional airline tone\n";
+        prompt += "5. Is concise (max 100 words)\n\n";
+        
+        prompt += "Do NOT include greetings like 'Dear Customer' or closings like 'Safe travels' - just the recommendation content.";
+        
+        return prompt;
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Get Customer Profile
+     * ================================================================
+     */
+    _getCustomerProfile: function(userID) {
+        
+        var profileGR = new GlideRecord('x_1603912_flightop_customer_profile');
+        profileGR.addQuery('customer', userID);
+        profileGR.query();
+        
+        if (profileGR.next()) {
+            return {
+                sysId: profileGR.getValue('sys_id'),
+                loyaltyStatus: profileGR.getValue('loyalty_status'),
+                historicalTrips: parseInt(profileGR.getValue('historical_trips') || '0'),
+                preferredUpgrade: profileGR.getValue('preferred_upgrade_type') || 'Premium Economy'
+            };
+        }
+        
+        return null;
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Fallback Recommendation (if AI fails)
+     * ================================================================
+     */
+    _generateFallbackRecommendation: function(loyaltyStatus, historicalTrips, preferredUpgrade) {
+        
+        var recommendation = '';
+        
+        switch(loyaltyStatus) {
+            case this.LOYALTY_TIERS.PLATINUM:
+                recommendation = "Welcome back, Platinum member! Enjoy complimentary lounge access, " +
+                    "priority boarding, and automatic upgrades. Your loyalty means everything to us!";
+                break;
+                
+            case this.LOYALTY_TIERS.GOLD:
+                recommendation = "Thank you, Gold member! You're eligible for 50% off lounge access and " +
+                    "priority check-in. Keep flying to reach Platinum status!";
+                break;
+                
+            case this.LOYALTY_TIERS.SILVER:
+                recommendation = "Great to see you, Silver member! Consider our meal upgrade packages. " +
+                    "You're making great progress toward Gold status!";
+                break;
+                
+            default:
+                recommendation = "Welcome aboard! Join our loyalty program to earn points and unlock " +
+                    "exclusive benefits on every flight!";
+        }
+        
+        return recommendation;
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Default Recommendation
+     * ================================================================
+     */
+    _getDefaultRecommendation: function() {
+        return "Thank you for choosing FlightOps 360! We look forward to providing excellent service.";
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: New Customer Recommendation
+     * ================================================================
+     */
+    _getNewCustomerRecommendation: function() {
+        return "Welcome to FlightOps 360! This appears to be your first flight with us. " +
+            "Enroll in our loyalty program to earn points and unlock exclusive benefits!";
+    },
+    
+    /**
+     * ================================================================
+     * PRIVATE: Log Recommendation
+     * ================================================================
+     */
+    _logRecommendation: function(userID, loyaltyStatus, source) {
+        var logMessage = 'FlightOps Gemini AI: Recommendation generated | ' +
+            'Source: ' + source + ' | ' +
+            'User: ' + userID + ' | ' +
+            'Loyalty: ' + loyaltyStatus;
+        
+        gs.info(logMessage);
+    },
+    
+    /**
+     * ================================================================
+     * PUBLIC: Get Customer Insights
+     * ================================================================
+     */
+    getCustomerInsights: function(userID) {
+        
+        var insights = {
+            hasProfile: false,
+            loyaltyTier: 'None',
+            totalTrips: 0,
+            nextTierProgress: 0,
+            nextTierName: '',
+            tripsToNextTier: 0,
+            estimatedLifetimeValue: 0
+        };
+        
+        try {
+            var profile = this._getCustomerProfile(userID);
+            
+            if (!profile) {
+                return insights;
+            }
+            
+            insights.hasProfile = true;
+            insights.loyaltyTier = profile.loyaltyStatus.charAt(0).toUpperCase() + 
+                                  profile.loyaltyStatus.slice(1);
+            insights.totalTrips = profile.historicalTrips;
+            
+            switch(profile.loyaltyStatus) {
+                case this.LOYALTY_TIERS.BRONZE:
+                    insights.nextTierName = 'Silver';
+                    insights.tripsToNextTier = Math.max(0, 10 - profile.historicalTrips);
+                    insights.nextTierProgress = Math.min(100, (profile.historicalTrips / 10) * 100);
+                    break;
+                    
+                case this.LOYALTY_TIERS.SILVER:
+                    insights.nextTierName = 'Gold';
+                    insights.tripsToNextTier = Math.max(0, 20 - profile.historicalTrips);
+                    insights.nextTierProgress = Math.min(100, (profile.historicalTrips / 20) * 100);
+                    break;
+                    
+                case this.LOYALTY_TIERS.GOLD:
+                    insights.nextTierName = 'Platinum';
+                    insights.tripsToNextTier = Math.max(0, 50 - profile.historicalTrips);
+                    insights.nextTierProgress = Math.min(100, (profile.historicalTrips / 50) * 100);
+                    break;
+                    
+                case this.LOYALTY_TIERS.PLATINUM:
+                    insights.nextTierName = 'Elite (Highest)';
+                    insights.tripsToNextTier = 0;
+                    insights.nextTierProgress = 100;
+                    break;
+            }
+            
+            insights.estimatedLifetimeValue = profile.historicalTrips * 500;
+            
+        } catch (error) {
+            gs.error('FlightOps Gemini AI Insights Error: ' + error.message);
+        }
+        
+        return insights;
+    },
+    
+    type: 'FlightOpsGeminiIntegration'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-01 07:29:20</sys_created_on>
+        <sys_id>c64a39e9c361f650a9babe1d05013193</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlightOpsGeminiIntegration</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sys_script_include_c64a39e9c361f650a9babe1d05013193</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-01 07:29:20</sys_updated_on>
+    </sys_script_include>
+</record_update>

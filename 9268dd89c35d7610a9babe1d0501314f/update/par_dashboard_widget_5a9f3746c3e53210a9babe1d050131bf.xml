@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_widget">
+    <par_dashboard_widget action="INSERT_OR_UPDATE">
+        <canvas display_value="">b5dd0e65c325f650a9babe1d050131cc</canvas>
+        <component display_value="Single score">d24d53f60350de7a652caf3188a46ed2</component>
+        <component_props>{"configVersion":"23.0.0-ci-SNAPSHOT","scoreSize":"auto","headingPosition":"top","sparklineStyle":"area","scoreIcon":"","iconStyle":"background","showScoreDate":false,"chartSize":null,"useRelativeScoreTime":false,"showScoreUpdateTime":false,"showZero":true,"colorConfig":{"type":"default"},"newReporting":false,"enableAddZerosAtApi":true,"additionalGroupByConfig":[],"dataSources":[{"isDatabaseView":false,"allowRealTime":true,"label":"Ticket Booking","sourceType":"table","tableOrViewName":"x_1603912_flightop_ticket_booking","filterQuery":"sys_created_onONThis month@javascript:gs.beginningOfThisMonth()@javascript:gs.endOfThisMonth()","reportSourceSysId":null,"preferredVisualizations":["d24d53f60350de7a652caf3188a46ed2"],"id":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NzQyNDY0NDM2","dataCategories":["trend","group","simple"]}],"showHeader":true,"showTotalAggregate":false,"showSubAggregate":false,"showFirstGroupAggregate":false,"showSecondGroupAggregate":false,"hideMatrixAggregate":false,"wrapTitle":false,"showLoadingIndicator":false,"showHeaderSeparator":false,"contextMenuActions":[],"title":null,"headerTitle":"Total Monthly Bookings","headingLevel":2,"description":null,"showBorder":true,"groupByConfig":null,"bareBorder":false,"formats":null,"dataCategory":null,"telemetry":null,"showDataPassthrough":false,"showAdditionalGroupBySelector":false,"allowAdditionalGroupByPerMetric":false,"metrics":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NzQyNDY0NDM2","id":"ZEdGaWJHVjRYekUyTURNNU1USmZabXhwWjJoMGIzQmZkR2xqYTJWMFgySnZiMnRwYm1jeE56WTBOelF5TkRZME5ETTIxNzY0NzQyNDY1MTg4","aggregateFunction":"COUNT","numberFormat":{"customFormat":false},"axisId":"primary"}],"groupBy":null,"filterPerMetric":[],"sortBy":"value","sortByOrder":"desc","trendBy":null,"showChange":false,"showChangePercentage":false,"showTarget":false,"showForecast":false,"forecastConfig":null,"showForecastRange":false,"showTrend":false,"showConfidenceBand":false,"showGapPercentage":false,"showSparkline":false,"showMetricLabel":false,"showThreshold":false,"showComment":false,"showTotalValue":null,"followFilters":true,"showFilterIcon":true,"enableRealTimeUpdate":false,"enableDrilldown":true,"enableClickAndStay":false,"showDataTable":false,"enableCustomEmptyState":false,"componentId":"6kybi0vs","emptyStateIllustration":"no-data","emptyStateHeading":"No data available.","emptyStateHeadingLevel":3,"emptyStateContent":"There are no scores available for the selected criteria. Contact your admin for more info.","emptyStateAlignment":"vertical-centered","refreshFrequency":null,"backgroundRefreshInterval":null,"standardFormatData":null,"hideDevSettings":false,"configPropModifiers":{},"filterConfigurations":"@state.parFilters","showMaximumRange":false,"allowChangeDateRange":false,"showDateRangeByDefault":false,"applyDateRange":false,"chartExtraConfig":null,"numberOfPeriods":3,"showAbsolutePeriod":false,"scoreType":null,"showChangeFrom":false,"startTime":null,"endTime":null,"useCurrentDateForEnd":false,"period":"M","useDataCache":false,"cacheExpirationTime":0,"showCacheTime":true,"isComponentInView":null,"pageId":null,"dateFormat":"default","showRefresh":true,"showFilterAsSeparateSeries":false,"id":"metrics","value":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NzQyNDY0NDM2","id":"ZEdGaWJHVjRYekUyTURNNU1USmZabXhwWjJoMGIzQmZkR2xqYTJWMFgySnZiMnRwYm1jeE56WTBOelF5TkRZME5ETTIxNzY0NzQyNDY1MTg4","aggregateFunction":"COUNT","numberFormat":{"customFormat":false},"axisId":"primary"}],"noDebounce":true,"propLabel":"Metric label"}</component_props>
+        <h>8</h>
+        <name/>
+        <stored_component/>
+        <sys_class_name>par_dashboard_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-03 06:19:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5a9f3746c3e53210a9babe1d050131bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>par_dashboard_widget_5a9f3746c3e53210a9babe1d050131bf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-03 06:19:53</sys_updated_on>
+        <visualization/>
+        <w>15</w>
+        <widget_props/>
+        <x>33</x>
+        <y>11</y>
+    </par_dashboard_widget>
+</record_update>

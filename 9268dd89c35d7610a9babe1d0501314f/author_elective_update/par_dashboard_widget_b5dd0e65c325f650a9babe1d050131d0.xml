@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_widget">
+    <par_dashboard_widget action="DELETE">
+        <canvas display_value="">b5dd0e65c325f650a9babe1d050131cc</canvas>
+        <component display_value="Vertical bar">23051643b7e03010097cb81cde11a910</component>
+        <component_props>{"drilldownLabel":null,"selectedElements":[],"configVersion":"23.0.0-ci-SNAPSHOT","chartSize":null,"chartVariation":"stacked","yAxisTitle":"Booking Status","yAxisFrom":null,"yAxisTo":null,"yAxisPosition":"bottom","yAxisShowGrid":true,"xAxisTitle":"Number of Bookings","xAxisWrapLabels":false,"xAxisMaxLabelSize":100,"showClosestSeriesOnHover":true,"xAxisTruncationType":"end","yAxisStyle":"clean","showLegend":true,"showLegendValue":false,"legendPosition":"bottom","legendHorizontalAlignment":"center","legendMaxItemWidth":null,"legendExpandToFit":false,"showDataLabels":false,"dataLabelPosition":"middle","showStackedValues":"none","showOverlappingLabels":false,"colorConfig":{"type":"default"},"yAxisHidden":false,"xAxisHidden":false,"newReporting":false,"enableAddZerosAtApi":true,"additionalGroupByConfig":[],"dataSources":[{"isDatabaseView":false,"allowRealTime":true,"label":"Ticket Booking","sourceType":"table","tableOrViewName":"x_1603912_flightop_ticket_booking","filterQuery":"","reportSourceSysId":null,"preferredVisualizations":["d24d53f60350de7a652caf3188a46ed2"],"id":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NTc4NTEyNzE1","dataCategories":["trend","group","simple"]}],"showHeader":true,"showTotalAggregate":false,"showSubAggregate":false,"showFirstGroupAggregate":false,"showSecondGroupAggregate":false,"hideMatrixAggregate":false,"wrapTitle":false,"showLoadingIndicator":false,"showHeaderSeparator":false,"contextMenuActions":[],"title":null,"headerTitle":"Booking Trends by Status","headingLevel":2,"description":"Shows distribution of bookings across different statuses","showBorder":true,"groupByConfig":null,"bareBorder":false,"formats":null,"dataCategory":null,"telemetry":null,"showDataPassthrough":false,"showAdditionalGroupBySelector":false,"allowAdditionalGroupByPerMetric":false,"metrics":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NTc4NTEyNzE1","id":"ZEdGaWJHVjRYekUyTURNNU1USmZabXhwWjJoMGIzQmZkR2xqYTJWMFgySnZiMnRwYm1jeE56WTBOVGM0TlRFeU56RTExNzY0NTc4NTE0MzA2","aggregateFunction":"COUNT","numberFormat":{"customFormat":false},"axisId":"primary"}],"groupBy":[{"groupBy":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NTc4NTEyNzE1","groupByField":"u_booking_status","isRange":false,"isChoice":true,"isPaBucket":false}],"maxNumberOfGroups":10,"numberOfGroupsBasedOn":"NO_OF_GROUP_BASED_ON_PER_METRIC","showOthers":false,"disableRanges":false}],"filterPerMetric":[],"sortBy":"value","sortByOrder":"desc","trendBy":null,"showChange":false,"showChangePercentage":false,"showTarget":false,"showForecast":false,"forecastConfig":null,"showForecastRange":false,"showTrend":false,"showConfidenceBand":false,"showGapPercentage":false,"showSparkline":false,"showMetricLabel":false,"showThreshold":false,"showComment":false,"showTotalValue":null,"followFilters":true,"showFilterIcon":true,"enableRealTimeUpdate":false,"enableDrilldown":true,"enableClickAndStay":false,"showDataTable":false,"enableCustomEmptyState":false,"componentId":"8p715kde","emptyStateIllustration":"no-data","emptyStateHeading":"No data available.","emptyStateHeadingLevel":3,"emptyStateContent":"There are no scores available for the selected criteria. Contact your admin for more info.","emptyStateAlignment":"vertical-centered","refreshFrequency":null,"backgroundRefreshInterval":null,"standardFormatData":null,"hideDevSettings":false,"configPropModifiers":{},"filterConfigurations":"@state.parFilters","showMaximumRange":false,"allowChangeDateRange":false,"showDateRangeByDefault":false,"applyDateRange":false,"chartExtraConfig":null,"numberOfPeriods":3,"showAbsolutePeriod":false,"scoreType":null,"showChangeFrom":false,"startTime":null,"endTime":null,"useCurrentDateForEnd":false,"period":"M","useDataCache":false,"cacheExpirationTime":0,"showCacheTime":true,"isComponentInView":null,"pageId":null,"dateFormat":"default","showRefresh":true,"showFilterAsSeparateSeries":false,"id":"description","value":"Shows distribution of bookings across different statuses","noDebounce":true,"propLabel":"Description"}</component_props>
+        <h>20</h>
+        <name/>
+        <stored_component/>
+        <sys_class_name>par_dashboard_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-01 08:45:55</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b5dd0e65c325f650a9babe1d050131d0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>par_dashboard_widget_b5dd0e65c325f650a9babe1d050131d0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-01 08:45:55</sys_updated_on>
+        <visualization/>
+        <w>10</w>
+        <widget_props/>
+        <x>0</x>
+        <y>0</y>
+    </par_dashboard_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</application>
+        <file_path/>
+        <instance_id>dde2881d3b706ad4986d048aa4e45a23</instance_id>
+        <instance_name>dev320909</instance_name>
+        <name>par_dashboard_widget_b5dd0e65c325f650a9babe1d050131d0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_widget"><par_dashboard_widget action="INSERT_OR_UPDATE"><canvas display_value="">b5dd0e65c325f650a9babe1d050131cc</canvas><component display_value="Vertical bar">23051643b7e03010097cb81cde11a910</component><component_props>{"drilldownLabel":null,"selectedElements":[],"configVersion":"23.0.0-ci-SNAPSHOT","chartSize":null,"chartVariation":"stacked","yAxisTitle":"Booking Status","yAxisFrom":null,"yAxisTo":null,"yAxisPosition":"bottom","yAxisShowGrid":true,"xAxisTitle":"Number of Bookings","xAxisWrapLabels":false,"xAxisMaxLabelSize":100,"showClosestSeriesOnHover":true,"xAxisTruncationType":"end","yAxisStyle":"clean","showLegend":true,"showLegendValue":false,"legendPosition":"bottom","legendHorizontalAlignment":"center","legendMaxItemWidth":null,"legendExpandToFit":false,"showDataLabels":false,"dataLabelPosition":"middle","showStackedValues":"none","showOverlappingLabels":false,"colorConfig":{"type":"default"},"yAxisHidden":false,"xAxisHidden":false,"newReporting":false,"enableAddZerosAtApi":true,"additionalGroupByConfig":[],"dataSources":[{"isDatabaseView":false,"allowRealTime":true,"label":"Ticket Booking","sourceType":"table","tableOrViewName":"x_1603912_flightop_ticket_booking","filterQuery":"","reportSourceSysId":null,"preferredVisualizations":["d24d53f60350de7a652caf3188a46ed2"],"id":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NTc4NTEyNzE1","dataCategories":["trend","group","simple"]}],"showHeader":true,"showTotalAggregate":false,"showSubAggregate":false,"showFirstGroupAggregate":false,"showSecondGroupAggregate":false,"hideMatrixAggregate":false,"wrapTitle":false,"showLoadingIndicator":false,"showHeaderSeparator":false,"contextMenuActions":[],"title":null,"headerTitle":"Booking Trends by Status","headingLevel":2,"description":"Shows distribution of bookings across different statuses","showBorder":true,"groupByConfig":null,"bareBorder":false,"formats":null,"dataCategory":null,"telemetry":null,"showDataPassthrough":false,"showAdditionalGroupBySelector":false,"allowAdditionalGroupByPerMetric":false,"metrics":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NTc4NTEyNzE1","id":"ZEdGaWJHVjRYekUyTURNNU1USmZabXhwWjJoMGIzQmZkR2xqYTJWMFgySnZiMnRwYm1jeE56WTBOVGM0TlRFeU56RTExNzY0NTc4NTE0MzA2","aggregateFunction":"COUNT","numberFormat":{"customFormat":false},"axisId":"primary"}],"groupBy":[{"groupBy":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfdGlja2V0X2Jvb2tpbmcxNzY0NTc4NTEyNzE1","groupByField":"u_booking_status","isRange":false,"isChoice":true,"isPaBucket":false}],"maxNumberOfGroups":10,"numberOfGroupsBasedOn":"NO_OF_GROUP_BASED_ON_PER_METRIC","showOthers":false,"disableRanges":false}],"filterPerMetric":[],"sortBy":"value","sortByOrder":"desc","trendBy":null,"showChange":false,"showChangePercentage":false,"showTarget":false,"showForecast":false,"forecastConfig":null,"showForecastRange":false,"showTrend":false,"showConfidenceBand":false,"showGapPercentage":false,"showSparkline":false,"showMetricLabel":false,"showThreshold":false,"showComment":false,"showTotalValue":null,"followFilters":true,"showFilterIcon":true,"enableRealTimeUpdate":false,"enableDrilldown":true,"enableClickAndStay":false,"showDataTable":false,"enableCustomEmptyState":false,"componentId":"8p715kde","emptyStateIllustration":"no-data","emptyStateHeading":"No data available.","emptyStateHeadingLevel":3,"emptyStateContent":"There are no scores available for the selected criteria. Contact your admin for more info.","emptyStateAlignment":"vertical-centered","refreshFrequency":null,"backgroundRefreshInterval":null,"standardFormatData":null,"hideDevSettings":false,"configPropModifiers":{},"filterConfigurations":"@state.parFilters","showMaximumRange":false,"allowChangeDateRange":false,"showDateRangeByDefault":false,"applyDateRange":false,"chartExtraConfig":null,"numberOfPeriods":3,"showAbsolutePeriod":false,"scoreType":null,"showChangeFrom":false,"startTime":null,"endTime":null,"useCurrentDateForEnd":false,"period":"M","useDataCache":false,"cacheExpirationTime":0,"showCacheTime":true,"isComponentInView":null,"pageId":null,"dateFormat":"default","showRefresh":true,"showFilterAsSeparateSeries":false,"id":"description","value":"Shows distribution of bookings across different statuses","noDebounce":true,"propLabel":"Description"}</component_props><h>20</h><name/><stored_component/><sys_class_name>par_dashboard_widget</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-12-01 08:45:55</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>b5dd0e65c325f650a9babe1d050131d0</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_overrides/><sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package><sys_policy/><sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope><sys_update_name>par_dashboard_widget_b5dd0e65c325f650a9babe1d050131d0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-12-01 08:45:55</sys_updated_on><visualization/><w>10</w><widget_props/><x>0</x><y>0</y></par_dashboard_widget></record_update>]]></payload>
+        <payload_hash>547035761</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>8d6f02c5c315b610a9babe1d050131fc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-01 08:45:55</sys_created_on>
+        <sys_id>31dd0e65c325f650a9babe1d050131d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19ad91704200000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-01 08:45:55</sys_updated_on>
+        <type>PAR Dashboard Widget</type>
+        <update_guid>3ddd0e654225f65077af085124ab0dd2</update_guid>
+        <update_guid_history>3ddd0e654225f65077af085124ab0dd2:547035761</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">cedd4e65c325f650a9babe1d0501311e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-01 08:45:56</sys_created_on>
+        <sys_db_object display_value="" name="par_dashboard_widget">par_dashboard_widget</sys_db_object>
+        <sys_id>20f625e1055a49d68e8fbd146ff0d729</sys_id>
+        <sys_metadata>b5dd0e65c325f650a9babe1d050131d0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_scope_delete display_value="">08d100301ab24d6485b9eced5bf62f31</sys_scope_delete>
+        <sys_update_name>par_dashboard_widget_b5dd0e65c325f650a9babe1d050131d0</sys_update_name>
+        <sys_update_version display_value="par_dashboard_widget_b5dd0e65c325f650a9babe1d050131d0">31dd0e65c325f650a9babe1d050131d4</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-01 08:45:56</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

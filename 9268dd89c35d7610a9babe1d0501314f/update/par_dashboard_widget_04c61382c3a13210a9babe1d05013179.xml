@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_widget">
+    <par_dashboard_widget action="INSERT_OR_UPDATE">
+        <canvas display_value="">b5dd0e65c325f650a9babe1d050131cc</canvas>
+        <component display_value="Donut">a2b0596cec6b9d49dd1ff9bf76b5084b</component>
+        <component_props>{"drilldownLabel":null,"selectedElements":[],"configVersion":"23.0.0-ci-SNAPSHOT","chartSize":null,"showDataLabels":true,"dataLabelsType":"both","maxLabelSize":null,"truncationType":"end","showRegister":true,"registerPosition":"bottom","registerOrientation":"horizontal","showRegisterOnSameLine":false,"showRegisterValue":false,"legendHorizontalAlignment":"center","legendMaxItemWidth":null,"legendExpandToFit":false,"showRegisterPercentage":false,"colorConfig":{"type":"default"},"newReporting":false,"enableAddZerosAtApi":true,"additionalGroupByConfig":[],"dataSources":[{"isDatabaseView":false,"allowRealTime":true,"label":"Customer Profile","sourceType":"table","tableOrViewName":"x_1603912_flightop_customer_profile","filterQuery":"","reportSourceSysId":null,"preferredVisualizations":["d24d53f60350de7a652caf3188a46ed2"],"id":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfY3VzdG9tZXJfcHJvZmlsZTE3NjQ3MzA1MDU5MTc=","dataCategories":["trend","group","simple"]}],"showHeader":true,"showTotalAggregate":false,"showSubAggregate":false,"showFirstGroupAggregate":false,"showSecondGroupAggregate":false,"hideMatrixAggregate":false,"wrapTitle":false,"showLoadingIndicator":false,"showHeaderSeparator":false,"contextMenuActions":[],"title":null,"headerTitle":"Customer Loyalty Distribution","headingLevel":2,"description":"","showBorder":true,"groupByConfig":null,"bareBorder":false,"formats":null,"dataCategory":null,"telemetry":null,"showDataPassthrough":false,"showAdditionalGroupBySelector":false,"allowAdditionalGroupByPerMetric":false,"metrics":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfY3VzdG9tZXJfcHJvZmlsZTE3NjQ3MzA1MDU5MTc=","id":"ZEdGaWJHVjRYekUyTURNNU1USmZabXhwWjJoMGIzQmZZM1Z6ZEc5dFpYSmZjSEp2Wm1sc1pURTNOalEzTXpBMU1EVTVNVGM9MTc2NDczMDUwODA0MA==","aggregateFunction":"COUNT","numberFormat":{"customFormat":false},"axisId":"primary"}],"groupBy":[{"groupBy":[{"dataSource":"dGFibGV4XzE2MDM5MTJfZmxpZ2h0b3BfY3VzdG9tZXJfcHJvZmlsZTE3NjQ3MzA1MDU5MTc=","groupByField":"sys_created_on","isRange":true,"isChoice":false,"isPaBucket":false}],"maxNumberOfGroups":"ALL","numberOfGroupsBasedOn":"NO_OF_GROUP_BASED_ON_PER_METRIC","showOthers":false,"disableRanges":false}],"filterPerMetric":[],"sortBy":"value","sortByOrder":"desc","trendBy":null,"showChange":false,"showChangePercentage":false,"showTarget":false,"showForecast":false,"forecastConfig":null,"showForecastRange":false,"showTrend":false,"showConfidenceBand":false,"showGapPercentage":false,"showSparkline":false,"showMetricLabel":true,"showThreshold":false,"showComment":false,"showTotalValue":true,"followFilters":true,"showFilterIcon":true,"enableRealTimeUpdate":false,"enableDrilldown":true,"enableClickAndStay":false,"showDataTable":false,"enableCustomEmptyState":false,"componentId":"17uwu9gk","emptyStateIllustration":"no-data","emptyStateHeading":"No data available.","emptyStateHeadingLevel":3,"emptyStateContent":"There are no scores available for the selected criteria. Contact your admin for more info.","emptyStateAlignment":"vertical-centered","refreshFrequency":null,"backgroundRefreshInterval":null,"standardFormatData":null,"hideDevSettings":false,"configPropModifiers":{},"filterConfigurations":"@state.parFilters","showMaximumRange":false,"allowChangeDateRange":false,"showDateRangeByDefault":false,"applyDateRange":false,"chartExtraConfig":null,"numberOfPeriods":3,"showAbsolutePeriod":false,"scoreType":null,"showChangeFrom":"previous","startTime":null,"endTime":null,"useCurrentDateForEnd":false,"period":"M","useDataCache":false,"cacheExpirationTime":0,"showCacheTime":true,"isComponentInView":null,"pageId":null,"dateFormat":"default","showRefresh":true,"showFilterAsSeparateSeries":false,"id":"showDataLabels","value":true,"noDebounce":true,"propLabel":"Show data labels"}</component_props>
+        <h>20</h>
+        <name/>
+        <stored_component/>
+        <sys_class_name>par_dashboard_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-03 03:21:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>04c61382c3a13210a9babe1d05013179</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>par_dashboard_widget_04c61382c3a13210a9babe1d05013179</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-03 03:23:07</sys_updated_on>
+        <visualization/>
+        <w>14</w>
+        <widget_props/>
+        <x>17</x>
+        <y>19</y>
+    </par_dashboard_widget>
+</record_update>

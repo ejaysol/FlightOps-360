@@ -2,7 +2,7 @@
     <sys_security_acl action="INSERT_OR_UPDATE">
         <active>true</active>
         <admin_overrides>true</admin_overrides>
-        <advanced>false</advanced>
+        <advanced>true</advanced>
         <applies_to/>
         <condition/>
         <controlled_by_refs/>
@@ -11,20 +11,34 @@
         <local_or_existing>Local</local_or_existing>
         <name>x_1603912_flightop_customer_profile</name>
         <operation display_value="read">read</operation>
-        <script/>
+        <script><![CDATA[(function executeRule(current, previous) {
+    
+    if (gs.hasRole('admin') || gs.hasRole('x_1603912_flightop.ops_manager')) {
+        return true;
+    }
+    
+    if (gs.hasRole('x_1603912_flightop.customer')) {
+        var currentUserId = gs.getUserID();
+        var profileCustomerId = current.getValue('customer');
+        return (profileCustomerId == currentUserId);
+    }
+    
+    return false;
+    
+})(current, previous);]]></script>
         <security_attribute/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-11-17 07:44:57</sys_created_on>
         <sys_id>40a9f9c9c351b610a9babe1d05013111</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>x_1603912_flightop_customer_profile</sys_name>
         <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
         <sys_policy/>
         <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
         <sys_update_name>sys_security_acl_40a9f9c9c351b610a9babe1d05013111</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-11-17 07:44:57</sys_updated_on>
+        <sys_updated_on>2025-12-05 00:37:24</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

@@ -7,7 +7,7 @@
         <hint/>
         <name>Ticket Booking</name>
         <order>100</order>
-        <roles>x_1603912_flightop.ticket_booking_user</roles>
+        <roles/>
         <sys_class_name>sys_app_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-11-17 05:29:00</sys_created_on>

@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[/**
+ * FlightOps 360 - Enhanced Booking Status Widget
+ * Client-side controller with modern interactions
+ */
+function FlightOpsBookingStatusController($scope, $window, $timeout) {
+  
+  var c = this;
+  
+  // Initialize
+  c.data = c.data || {};
+  c.data.loading = false;
+  
+  /**
+   * View booking details in new window
+   */
+  c.viewDetails = function(sysId) {
+    if (!sysId) {
+      return;
+    }
+    
+    // Navigate to the ticket booking record
+    var url = '/nav_to.do?uri=x_1603912_flightop_ticket_booking.do?sys_id=' + sysId;
+    $window.open(url, '_blank');
+  };
+  
+  /**
+   * Refresh bookings with animation
+   */
+  c.refreshBookings = function() {
+    if (c.data.loading) {
+      return; // Prevent multiple refreshes
+    }
+    
+    c.data.loading = true;
+    
+    c.server.update().then(function(response) {
+      $timeout(function() {
+        c.data.loading = false;
+      }, 500); // Small delay for smooth transition
+    });
+  };
+  
+  /**
+   * Auto-refresh every 5 minutes (optional)
+   */
+  var autoRefreshInterval = $timeout(function() {
+    if (!c.data.loading) {
+      c.refreshBookings();
+    }
+  }, 300000); // 5 minutes
+  
+  // Cleanup on destroy
+  $scope.$on('$destroy', function() {
+    if (autoRefreshInterval) {
+      $timeout.cancel(autoRefreshInterval);
+    }
+  });
+  
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>// FlightOps 360 - Booking Status Widget Styles
+// Color Variables
+$primary: #494cbb;
+$accent: #ffa201;
+$danger: #ff0303;
+$muted: #8b8ccf;
+$bg: #e8e7f1;
+$panel: #ffffff;
+$border: #d4bdd8;
+$highlight: #ffd182;
+
+.flightops-booking-widget {
+  background: $panel;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(73, 76, 187, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid $border;
+
+  // Header
+  .flightops-header {
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .header-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+
+      .header-text {
+        h2 {
+          margin: 0;
+          font-size: 24px;
+          font-weight: 600;
+        }
+
+        .subtitle {
+          margin: 4px 0 0 0;
+          opacity: 0.9;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .refresh-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &amp;:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(180deg);
+      }
+
+      &amp;:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  // Loading State
+  .loading-container {
+    padding: 60px 24px;
+    text-align: center;
+
+    .spinner {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+
+      .spinner-ring {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 4px solid transparent;
+        border-top-color: $primary;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+
+        &amp;:nth-child(2) {
+          border-top-color: $accent;
+          animation-delay: 0.2s;
+        }
+
+        &amp;:nth-child(3) {
+          border-top-color: $muted;
+          animation-delay: 0.4s;
+        }
+      }
+    }
+
+    .loading-text {
+      color: $muted;
+      font-size: 16px;
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  // Bookings Grid
+  .bookings-grid {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Booking Card
+  .booking-card {
+    background: $panel;
+    border: 2px solid $border;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &amp;:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(73, 76, 187, 0.15);
+      border-color: $primary;
+    }
+
+    .card-header {
+      padding: 16px;
+      background: linear-gradient(135deg, $bg 0%, lighten($bg, 5%) 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $border;
+
+      .booking-number {
+        .label-text {
+          display: block;
+          font-size: 11px;
+          color: $muted;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .number-value {
+          display: block;
+          font-size: 18px;
+          font-weight: 700;
+          color: $primary;
+          margin-top: 4px;
+        }
+      }
+
+      .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        &amp;.badge-new {
+          background: $primary;
+          color: white;
+        }
+
+        &amp;.badge-confirmed {
+          background: #4caf50;
+          color: white;
+        }
+
+        &amp;.badge-cancelled {
+          background: $accent;
+          color: white;
+        }
+
+        &amp;.badge-refunded {
+          background: $danger;
+          color: white;
+        }
+      }
+    }
+
+    .card-body {
+      padding: 20px;
+
+      .flight-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $border;
+
+        .flight-icon {
+          width: 48px;
+          height: 48px;
+          background: linear-gradient(135deg, $primary 0%, $muted 100%);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 20px;
+        }
+
+        .flight-details {
+          .flight-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: $primary;
+            margin-bottom: 4px;
+          }
+
+          .flight-date {
+            font-size: 13px;
+            color: $muted;
+          }
+        }
+      }
+
+      .booking-details {
+        .detail-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
+          font-size: 14px;
+
+          i {
+            color: $primary;
+            width: 20px;
+          }
+
+          .detail-label {
+            color: $muted;
+            font-weight: 500;
+          }
+
+          .detail-value {
+            color: #333;
+            font-weight: 600;
+            margin-left: auto;
+
+            &amp;.price {
+              color: #4caf50;
+              font-size: 18px;
+            }
+          }
+
+          &amp;.price-item {
+            padding-top: 12px;
+            border-top: 1px solid $border;
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+
+    .card-footer {
+      padding: 16px 20px;
+      background: $bg;
+      border-top: 1px solid $border;
+
+      .btn-view-details {
+        width: 100%;
+        background: linear-gradient(135deg, $primary 0%, darken($primary, 5%) 100%);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        &amp;:hover {
+          background: linear-gradient(135deg, darken($primary, 5%) 0%, darken($primary, 10%) 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(73, 76, 187, 0.3);
+        }
+
+        i {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  // Recommendation Card
+  .recommendation-card {
+    margin: 24px;
+    background: linear-gradient(135deg, $highlight 0%, lighten($highlight, 10%) 100%);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid $accent;
+    box-shadow: 0 4px 16px rgba(255, 162, 1, 0.2);
+
+    .recommendation-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+
+      i {
+        font-size: 24px;
+        color: $accent;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+        font-weight: 700;
+      }
+    }
+
+    .recommendation-content {
+      p {
+        margin: 0;
+        color: #555;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Empty State
+  .empty-state {
+    padding: 60px 24px;
+    text-align: center;
+
+    .empty-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, $bg 0%, lighten($bg, 5%) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid $border;
+
+      i {
+        font-size: 60px;
+        color: $muted;
+      }
+    }
+
+    h3 {
+      color: $primary;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: $muted;
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .btn-book-now {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, $accent 0%, darken($accent, 5%) 100%);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 162, 1, 0.3);
+
+      &amp;:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 162, 1, 0.4);
+      }
+
+      i {
+        font-size: 18px;
+      }
+    }
+  }
+
+  // Widget Footer
+  .widget-footer {
+    padding: 16px 24px;
+    background: $bg;
+    border-top: 1px solid $border;
+    text-align: center;
+
+    small {
+      color: $muted;
+      font-size: 12px;
+    }
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>flightops_booking_status</id>
+        <internal>false</internal>
+        <link><![CDATA[/**
+ * FlightOps 360 - Booking Status Widget
+ * Link function for widget configuration
+ */
+function link(scope, element, attrs, ctrl) {
+  
+  // Add any custom DOM manipulation or event listeners here
+  
+  // Example: Add smooth scroll behavior
+  element.find('.bookings-grid').on('scroll', function() {
+    // Custom scroll behavior if needed
+  });
+  
+  // Cleanup on destroy
+  scope.$on('$destroy', function() {
+    // Remove any event listeners
+  });
+  
+}]]></link>
+        <name>FlightOps Booking Status</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[/**
+ * FlightOps 360 - Enhanced Booking Status Widget
+ * Server-side data controller
+ * Purpose: Fetch and format customer booking data with enhanced formatting
+ */
+(function() {
+  
+  // Initialize data object
+  data.bookings = [];
+  data.loading = false;
+  data.last_updated = new GlideDateTime().getDisplayValue();
+  data.showRecommendation = false;
+  data.latestRecommendation = '';
+  data.catalog_item_id = '';
+  
+  // Get currently logged-in user
+  var currentUserId = gs.getUserID();
+  
+  // Security check: Only show data if user is logged in
+  if (!currentUserId) {
+    gs.addErrorMessage('Please log in to view your bookings');
+    return;
+  }
+  
+  try {
+    // STEP 1: Query ticket bookings for the current user
+    var bookingGR = new GlideRecord('x_1603912_flightop_ticket_booking');
+    bookingGR.addQuery('u_customer_id', currentUserId);
+    bookingGR.orderByDesc('sys_created_on'); // Most recent first
+    bookingGR.setLimit(50); // Limit to 50 records for performance
+    bookingGR.query();
+    
+    // STEP 2: Process each booking record
+    while (bookingGR.next()) {
+      // Format date
+      var createdDate = new GlideDateTime(bookingGR.sys_created_on);
+      var formattedDate = createdDate.getDisplayValue();
+      
+      // Create booking object with formatted data
+      var booking = {
+        sys_id: bookingGR.getValue('sys_id'),
+        number: bookingGR.getDisplayValue('number') || bookingGR.getValue('number'),
+        flight_number: bookingGR.getValue('u_flight_number'),
+        seat_selection: bookingGR.getValue('u_seat_selection'),
+        flight_price: bookingGR.getValue('u_flight_price'),
+        booking_status: bookingGR.getValue('u_booking_status'),
+        booking_status_display: bookingGR.getDisplayValue('u_booking_status') || bookingGR.getValue('u_booking_status'),
+        created_on: formattedDate,
+        genai_recommendation: bookingGR.getValue('u_genai_recommendation')
+      };
+      
+      // Add to bookings array
+      data.bookings.push(booking);
+      
+      // Show recommendation from most recent booking
+      if (data.bookings.length === 1 && booking.genai_recommendation) {
+        data.showRecommendation = true;
+        data.latestRecommendation = booking.genai_recommendation;
+      }
+    }
+    
+    // STEP 3: Get the Book a Flight catalog item ID for the "Book Now" button
+    var catalogItemGR = new GlideRecord('sc_cat_item');
+    catalogItemGR.addQuery('name', 'Book a Flight');
+    catalogItemGR.setLimit(1);
+    catalogItemGR.query();
+    
+    if (catalogItemGR.next()) {
+      data.catalog_item_id = catalogItemGR.getValue('sys_id');
+    }
+    
+    // STEP 4: Log for debugging (optional - remove in production)
+    gs.info('FlightOps 360: Loaded ' + data.bookings.length + ' bookings for user ' + currentUserId);
+    
+  } catch (error) {
+    // Error handling
+    gs.error('FlightOps 360 Widget Error: ' + error.message);
+    gs.addErrorMessage('Unable to load booking data. Please try again.');
+  }
+  
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-01 07:07:28</sys_created_on>
+        <sys_id>2f473d6dc321f650a9babe1d05013104</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>FlightOps Booking Status</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sp_widget_2f473d6dc321f650a9babe1d05013104</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-01 07:11:01</sys_updated_on>
+        <template><![CDATA[<!-- 
+  FlightOps 360 - Enhanced Booking Status Widget
+  Modern design with beautiful interactions
+-->
+<div class="flightops-booking-widget" ng-class="{'loading': c.data.loading}">
+  
+  <!-- Header Section -->
+  <div class="flightops-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <i class="fa fa-plane"></i>
+      </div>
+      <div class="header-text">
+        <h2>My Flight Bookings</h2>
+        <p class="subtitle">Manage and track your reservations</p>
+      </div>
+    </div>
+    <button class="refresh-btn" ng-click="c.refreshBookings()" ng-disabled="c.data.loading">
+      <i class="fa fa-refresh" ng-class="{'fa-spin': c.data.loading}"></i>
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div ng-if="c.data.loading" class="loading-container">
+    <div class="spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+    </div>
+    <p class="loading-text">Loading your bookings...</p>
+  </div>
+
+  <!-- Bookings Grid -->
+  <div ng-if="!c.data.loading && c.data.bookings.length > 0" class="bookings-grid">
+    <div class="booking-card" ng-repeat="booking in c.data.bookings" ng-class="'status-' + booking.booking_status">
+      <div class="card-header">
+        <div class="booking-number">
+          <span class="label-text">Booking #</span>
+          <span class="number-value">{{booking.number}}</span>
+        </div>
+        <span class="status-badge" ng-class="'badge-' + booking.booking_status">
+          {{booking.booking_status_display}}
+        </span>
+      </div>
+      
+      <div class="card-body">
+        <div class="flight-info">
+          <div class="flight-icon">
+            <i class="fa fa-plane"></i>
+          </div>
+          <div class="flight-details">
+            <div class="flight-number">{{booking.flight_number}}</div>
+            <div class="flight-date">{{booking.created_on}}</div>
+          </div>
+        </div>
+        
+        <div class="booking-details">
+          <div class="detail-item">
+            <i class="fa fa-chair"></i>
+            <span class="detail-label">Seat:</span>
+            <span class="detail-value">{{booking.seat_selection || 'Auto-assigned'}}</span>
+          </div>
+          <div class="detail-item price-item">
+            <i class="fa fa-dollar-sign"></i>
+            <span class="detail-label">Price:</span>
+            <span class="detail-value price">${{booking.flight_price}}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-footer">
+        <button class="btn-view-details" ng-click="c.viewDetails(booking.sys_id)">
+          <i class="fa fa-eye"></i> View Details
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Recommendation Card -->
+  <div ng-if="!c.data.loading && c.data.showRecommendation && c.data.bookings.length > 0" class="recommendation-card">
+    <div class="recommendation-header">
+      <i class="fa fa-lightbulb-o"></i>
+      <h3>Personalized Recommendation</h3>
+    </div>
+    <div class="recommendation-content">
+      <p>{{c.data.latestRecommendation}}</p>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div ng-if="!c.data.loading && c.data.bookings.length === 0" class="empty-state">
+    <div class="empty-icon">
+      <i class="fa fa-ticket"></i>
+    </div>
+    <h3>No Bookings Yet</h3>
+    <p>Start your journey by booking your first flight!</p>
+    <a href="?id=sc_cat_item&sys_id={{c.data.catalog_item_id}}" class="btn-book-now">
+      <i class="fa fa-plus"></i> Book Your Flight
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <div ng-if="!c.data.loading && c.data.bookings.length > 0" class="widget-footer">
+    <small>Last updated: {{c.data.last_updated}}</small>
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>2f473d6dc321f650a9babe1d05013104</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-01 07:07:28</sys_created_on>
+        <sys_id>234731a5c361f650a9babe1d050131e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-01 07:07:28</sys_updated_on>
+        <table>sp_widget</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

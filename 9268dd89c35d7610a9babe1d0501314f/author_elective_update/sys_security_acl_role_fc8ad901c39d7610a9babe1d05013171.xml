@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 05:29:01</sys_created_on>
+        <sys_id>fc8ad901c39d7610a9babe1d05013171</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1603912_flightop_ticket_booking.x_1603912_flightop.ticket_booking_user</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_security_acl display_value="x_1603912_flightop_ticket_booking">fc8ad901c39d7610a9babe1d0501316b</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_fc8ad901c39d7610a9babe1d05013171</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 05:29:01</sys_updated_on>
+        <sys_user_role display_value="x_1603912_flightop.ticket_booking_user" name="x_1603912_flightop.ticket_booking_user">388a1d4dc35d7610a9babe1d05013112</sys_user_role>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</application>
+        <file_path/>
+        <instance_id>dde2881d3b706ad4986d048aa4e45a23</instance_id>
+        <instance_name>dev320909</instance_name>
+        <name>sys_security_acl_role_fc8ad901c39d7610a9babe1d05013171</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-11-17 05:29:01</sys_created_on><sys_id>fc8ad901c39d7610a9babe1d05013171</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_1603912_flightop_ticket_booking.x_1603912_flightop.ticket_booking_user</sys_name><sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package><sys_policy/><sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope><sys_security_acl display_value="x_1603912_flightop_ticket_booking">fc8ad901c39d7610a9babe1d0501316b</sys_security_acl><sys_update_name>sys_security_acl_role_fc8ad901c39d7610a9babe1d05013171</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-11-17 05:29:01</sys_updated_on><sys_user_role display_value="x_1603912_flightop.ticket_booking_user" name="x_1603912_flightop.ticket_booking_user">388a1d4dc35d7610a9babe1d05013112</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>2066918163</payload_hash>
+        <record_name>x_1603912_flightop_ticket_booking.x_1603912_flightop.ticket_booking_user</record_name>
+        <reverted_from/>
+        <source>9268dd89c35d7610a9babe1d05013152</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 05:29:01</sys_created_on>
+        <sys_id>b88ad901c39d7610a9babe1d05013177</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19a9049b5cf0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-17 05:29:01</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>b48ad901739d7610153ca23653299e76</update_guid>
+        <update_guid_history>b48ad901739d7610153ca23653299e76:2066918163</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_1603912_flightop_ticket_booking.x_1603912_flightop.ticket_booking_user">2abf5326c3adf210a9babe1d050131ff</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-04 17:17:36</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>127aebb7a5674abd8a636989dc588c09</sys_id>
+        <sys_metadata>fc8ad901c39d7610a9babe1d05013171</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1603912_flightop_ticket_booking.x_1603912_flightop.ticket_booking_user</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_parent display_value="x_1603912_flightop_ticket_booking">fc8ad901c39d7610a9babe1d0501316b</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_scope_delete display_value="">08d100301ab24d6485b9eced5bf62f31</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_fc8ad901c39d7610a9babe1d05013171</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_fc8ad901c39d7610a9babe1d05013171">b88ad901c39d7610a9babe1d05013177</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-04 17:17:36</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -4,7 +4,7 @@
         <hint/>
         <name>Customer Profile</name>
         <order/>
-        <roles>x_1603912_flightop.customer_profile_user</roles>
+        <roles/>
         <sys_class_name>sys_ui_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-11-17 07:44:57</sys_created_on>

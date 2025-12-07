@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="DELETE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1603912_flightop.flightops_crew_member</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>x_1603912_flightop.flightops_crew_member</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-17 05:21:57</sys_created_on>
+        <sys_id>d1e85185c35d7610a9babe1d050131a2</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_1603912_flightop.flightops_crew_member</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sys_user_role_d1e85185c35d7610a9babe1d050131a2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-04 09:28:36</sys_updated_on>
+    </sys_user_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</application>
+        <file_path/>
+        <instance_id>dde2881d3b706ad4986d048aa4e45a23</instance_id>
+        <instance_name>dev320909</instance_name>
+        <name>sys_user_role_d1e85185c35d7610a9babe1d050131a2</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><grantable>true</grantable><includes_roles/><name>x_1603912_flightop.flightops_crew_member</name><scoped_admin>false</scoped_admin><suffix>x_1603912_flightop.flightops_crew_member</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-11-17 05:21:57</sys_created_on><sys_id>d1e85185c35d7610a9babe1d050131a2</sys_id><sys_mod_count>1</sys_mod_count><sys_name>x_1603912_flightop.flightops_crew_member</sys_name><sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package><sys_policy/><sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope><sys_update_name>sys_user_role_d1e85185c35d7610a9babe1d050131a2</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-12-04 09:28:36</sys_updated_on></sys_user_role></record_update>]]></payload>
+        <payload_hash>916611943</payload_hash>
+        <record_name>x_1603912_flightop.flightops_crew_member</record_name>
+        <reverted_from/>
+        <source>8d6f02c5c315b610a9babe1d050131fc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-04 09:28:37</sys_created_on>
+        <sys_id>e06479eec361f210a9babe1d05013152</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19ae8b12e690000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-04 09:28:37</sys_updated_on>
+        <type>Role</type>
+        <update_guid>e06479ee9b61f210b5ea8ca834229a51</update_guid>
+        <update_guid_history>e06479ee9b61f210b5ea8ca834229a51:916611943,69e85185e75d761075f039a464e650a6:1809752775</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_1603912_flightop.flightops_crew_member">f0ed0362c32df210a9babe1d0501316b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-04 15:59:39</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role">sys_user_role</sys_db_object>
+        <sys_id>6a1f5dd71b2b46c8af4ef76a3ccf4944</sys_id>
+        <sys_metadata>d1e85185c35d7610a9babe1d050131a2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1603912_flightop.flightops_crew_member</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_scope_delete display_value="">08d100301ab24d6485b9eced5bf62f31</sys_scope_delete>
+        <sys_update_name>sys_user_role_d1e85185c35d7610a9babe1d050131a2</sys_update_name>
+        <sys_update_version display_value="sys_user_role_d1e85185c35d7610a9babe1d050131a2">e06479eec361f210a9babe1d05013152</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-04 15:59:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
