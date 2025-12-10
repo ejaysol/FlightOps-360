@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function FlightOpsOpsKpisController($scope) {
+  var c = this;
+
+  function buildSparkline() {
+    if (!c.data.sparkline || !c.data.sparkline.length) {
+      c.sparklinePoints = '';
+      return;
+    }
+    var max = Math.max.apply(null, c.data.sparkline.map(function(point) { return point.count; }));
+    var step = 100 / (c.data.sparkline.length - 1 || 1);
+    c.sparklinePoints = c.data.sparkline.map(function(point, index) {
+      var x = index * step;
+      var y = 30 - (point.count / (max || 1) * 30);
+      return x + ',' + y;
+    }).join(' ');
+  }
+
+  $scope.$watch(function() { return c.data.sparkline; }, buildSparkline, true);
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flightops-kpis {&#13;
+  display: grid;&#13;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));&#13;
+  gap: 20px;&#13;
+&#13;
+  .kpi-card {&#13;
+    background: var(--flightops-panel);&#13;
+    border: 1px solid var(--flightops-border);&#13;
+    border-radius: 16px;&#13;
+    padding: 20px;&#13;
+    box-shadow: 0 10px 30px rgba(49, 47, 141, 0.08);&#13;
+&#13;
+    .label {&#13;
+      text-transform: uppercase;&#13;
+      font-size: 11px;&#13;
+      color: var(--flightops-muted);&#13;
+      letter-spacing: 1px;&#13;
+    }&#13;
+    h2 {&#13;
+      margin: 8px 0;&#13;
+      font-size: 32px;&#13;
+      color: #1c1d3d;&#13;
+    }&#13;
+    .subtext {&#13;
+      color: var(--flightops-muted);&#13;
+      &amp;.ok { color: #32c671; }&#13;
+      &amp;.warn { color: #ff7e67; }&#13;
+    }&#13;
+    .sparkline {&#13;
+      margin-top: 12px;&#13;
+      svg {&#13;
+        width: 100%;&#13;
+        height: 40px;&#13;
+      }&#13;
+      polyline {&#13;
+        fill: none;&#13;
+        stroke: #494cbb;&#13;
+        stroke-width: 2;&#13;
+        stroke-linejoin: round;&#13;
+        stroke-linecap: round;&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Displays revenue, booking volume, and compliance KPIs with sparkline</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>flightops_ops_kpis</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>FlightOps Operations KPIs</name>
+        <option_schema/>
+        <public>false</public>
+        <roles>x_1603912_flightop.ops_manager,admin</roles>
+        <script><![CDATA[(function() {
+  data.loading = true;
+
+  if (!gs.hasRole('x_1603912_flightop.ops_manager') && !gs.hasRole('admin')) {
+    gs.addErrorMessage('Ops KPIs available to operations staff only.');
+    data.loading = false;
+    return;
+  }
+
+  var dateRange = {
+    start: new GlideDateTime(),
+    end: new GlideDateTime()
+  };
+  dateRange.start.addDaysLocalTime(-30);
+
+  // Revenue (sum of flight_price in last 30 days)
+  var revenueAgg = new GlideAggregate('x_1603912_flightop_ticket_booking');
+  revenueAgg.addAggregate('SUM', 'u_flight_price');
+  revenueAgg.addQuery('sys_created_on', '>=', dateRange.start);
+  revenueAgg.query();
+  var revenue = 0;
+  if (revenueAgg.next()) {
+    revenue = parseFloat(revenueAgg.getAggregate('SUM', 'u_flight_price')) || 0;
+  }
+
+  // Booking volume grouped by day for sparkline
+  var bookingsAgg = new GlideAggregate('x_1603912_flightop_ticket_booking');
+  bookingsAgg.addEncodedQuery('sys_created_onONLast 7 days@javascript:gs.beginningOfLast7Days()@javascript:gs.endOfToday()');
+  bookingsAgg.addAggregate('COUNT');
+  bookingsAgg.groupBy('sys_created_on');
+  bookingsAgg.orderBy('sys_created_on');
+  bookingsAgg.query();
+  data.sparkline = [];
+  while (bookingsAgg.next()) {
+    data.sparkline.push({
+      date: bookingsAgg.getDisplayValue('sys_created_on'),
+      count: parseInt(bookingsAgg.getAggregate('COUNT'), 10) || 0
+    });
+  }
+
+  // Crew compliance rate
+  var totalCrew = new GlideAggregate('x_1603912_flightop_crew_schedule');
+  totalCrew.addAggregate('COUNT');
+  totalCrew.addQuery('u_scheduled_time', '>=', gs.beginningOfToday());
+  totalCrew.addQuery('u_scheduled_time', '<=', gs.endOfToday());
+  totalCrew.query();
+  var totalCount = 0;
+  if (totalCrew.next()) {
+    totalCount = parseInt(totalCrew.getAggregate('COUNT'), 10) || 0;
+  }
+
+  var compliantAgg = new GlideAggregate('x_1603912_flightop_crew_schedule');
+  compliantAgg.addAggregate('COUNT');
+  compliantAgg.addQuery('u_scheduled_time', '>=', gs.beginningOfToday());
+  compliantAgg.addQuery('u_scheduled_time', '<=', gs.endOfToday());
+  compliantAgg.addQuery('u_compliance_flag', true);
+  compliantAgg.query();
+  var compliantCount = 0;
+  if (compliantAgg.next()) {
+    compliantCount = parseInt(compliantAgg.getAggregate('COUNT'), 10) || 0;
+  }
+
+  data.metrics = {
+    revenue: revenue,
+    bookingCount: data.sparkline.reduce(function(sum, point) { return sum + point.count; }, 0),
+    complianceRate: totalCount ? Math.round((compliantCount / totalCount) * 100) : 100,
+    avgTicket: data.sparkline.length ? revenue / data.sparkline.length : revenue
+  };
+
+  data.loading = false;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-08 22:41:24</sys_created_on>
+        <sys_id>f45f4988c37df210a9babe1d05013186</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlightOps Operations KPIs</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sp_widget_f45f4988c37df210a9babe1d05013186</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-08 22:41:24</sys_updated_on>
+        <template><![CDATA[<div class="flightops-kpis" ng-class="{'loading': c.data.loading}">
+  <div class="kpi-card">
+    <p class="label">30-day Revenue</p>
+    <h2>${{c.data.metrics.revenue | number:0}}</h2>
+    <p class="subtext">Avg/Ticket: ${{c.data.metrics.avgTicket | number:0}}</p>
+  </div>
+
+  <div class="kpi-card">
+    <p class="label">Bookings (7 days)</p>
+    <h2>{{c.data.metrics.bookingCount}}</h2>
+    <div class="sparkline">
+      <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+        <polyline ng-attr-points="{{c.sparklinePoints}}" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="kpi-card">
+    <p class="label">Crew Compliance Today</p>
+    <h2>{{c.data.metrics.complianceRate}}%</h2>
+    <p class="subtext" ng-class="{'ok': c.data.metrics.complianceRate >= 95, 'warn': c.data.metrics.complianceRate < 95}">
+      {{c.data.metrics.complianceRate >= 95 ? 'On Track' : 'Investigate gaps'}}
+    </p>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

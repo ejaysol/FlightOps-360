@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function FlightOpsCrewPulseController($window, spUtil) {
+  var c = this;
+
+  c.refresh = function() {
+    if (c.data.loading) {
+      return;
+    }
+    c.data.loading = true;
+    c.server.update().then(function() {
+      c.data.loading = false;
+    });
+  };
+
+  c.openRecord = function(sysId) {
+    if (!sysId) {
+      return;
+    }
+    $window.open('/nav_to.do?uri=x_1603912_flightop_crew_schedule.do?sys_id=' + sysId, '_blank');
+  };
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>$primary: #494cbb;&#13;
+$accent: #ffa201;&#13;
+$danger: #ff0303;&#13;
+$border: #d4bdd8;&#13;
+&#13;
+.flightops-crew-widget {&#13;
+  background: var(--flightops-panel);&#13;
+  border: 1px solid var(--flightops-border);&#13;
+  border-radius: 16px;&#13;
+  padding: 24px;&#13;
+  box-shadow: 0 12px 32px rgba(49, 47, 141, 0.1);&#13;
+&#13;
+  .crew-widget-header {&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: space-between;&#13;
+    margin-bottom: 16px;&#13;
+&#13;
+    h3 {&#13;
+      margin: 0;&#13;
+      font-size: 22px;&#13;
+      color: $primary;&#13;
+    }&#13;
+&#13;
+    p {&#13;
+      margin: 4px 0 0;&#13;
+      color: var(--flightops-muted);&#13;
+    }&#13;
+&#13;
+    .refresh {&#13;
+      border: none;&#13;
+      background: rgba(73, 76, 187, 0.1);&#13;
+      width: 44px;&#13;
+      height: 44px;&#13;
+      border-radius: 10px;&#13;
+      color: $primary;&#13;
+      cursor: pointer;&#13;
+      transition: transform 0.2s;&#13;
+&#13;
+      &amp;:hover {&#13;
+        transform: rotate(90deg);&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+&#13;
+  .crew-grid {&#13;
+    display: grid;&#13;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));&#13;
+    gap: 20px;&#13;
+  }&#13;
+&#13;
+  .crew-card {&#13;
+    border: 1px solid $border;&#13;
+    border-radius: 14px;&#13;
+    padding: 18px;&#13;
+    background: white;&#13;
+    display: flex;&#13;
+    flex-direction: column;&#13;
+    gap: 16px;&#13;
+&#13;
+    &amp;.non-compliant {&#13;
+      border-color: rgba(255, 3, 3, 0.4);&#13;
+      box-shadow: 0 8px 24px rgba(255, 3, 3, 0.15);&#13;
+    }&#13;
+&#13;
+    .crew-card__top {&#13;
+      display: flex;&#13;
+      justify-content: space-between;&#13;
+      align-items: center;&#13;
+&#13;
+      .label {&#13;
+        text-transform: uppercase;&#13;
+        font-size: 10px;&#13;
+        letter-spacing: 1px;&#13;
+        color: var(--flightops-muted);&#13;
+        margin: 0;&#13;
+      }&#13;
+&#13;
+      h4 {&#13;
+        margin: 4px 0 0;&#13;
+        font-size: 18px;&#13;
+        color: $primary;&#13;
+      }&#13;
+&#13;
+      .role-chip {&#13;
+        padding: 6px 12px;&#13;
+        border-radius: 999px;&#13;
+        background: rgba(255, 162, 1, 0.15);&#13;
+        color: $accent;&#13;
+        font-weight: 600;&#13;
+        text-transform: capitalize;&#13;
+      }&#13;
+    }&#13;
+&#13;
+    .crew-card__body {&#13;
+      display: flex;&#13;
+      justify-content: space-between;&#13;
+      gap: 16px;&#13;
+&#13;
+      .crew-person {&#13;
+        display: flex;&#13;
+        gap: 10px;&#13;
+        align-items: center;&#13;
+&#13;
+        i {&#13;
+          font-size: 32px;&#13;
+          color: $primary;&#13;
+        }&#13;
+&#13;
+        .name {&#13;
+          margin: 0;&#13;
+          font-weight: 600;&#13;
+        }&#13;
+&#13;
+        .time {&#13;
+          margin: 2px 0 0;&#13;
+          color: var(--flightops-muted);&#13;
+          font-size: 13px;&#13;
+        }&#13;
+      }&#13;
+&#13;
+      .compliance {&#13;
+        display: flex;&#13;
+        align-items: center;&#13;
+        gap: 6px;&#13;
+        font-weight: 600;&#13;
+&#13;
+        &amp;.ok {&#13;
+          color: #32c671;&#13;
+        }&#13;
+&#13;
+        &amp;.alert {&#13;
+          color: $danger;&#13;
+        }&#13;
+      }&#13;
+    }&#13;
+&#13;
+    .crew-card__actions {&#13;
+      .btn-link {&#13;
+        background: transparent;&#13;
+        border: none;&#13;
+        color: $primary;&#13;
+        font-weight: 600;&#13;
+        padding: 0;&#13;
+        cursor: pointer;&#13;
+        text-decoration: underline;&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+&#13;
+  .crew-loading,&#13;
+  .crew-empty {&#13;
+    text-align: center;&#13;
+    padding: 40px 0;&#13;
+    color: var(--flightops-muted);&#13;
+&#13;
+    i {&#13;
+      font-size: 48px;&#13;
+      margin-bottom: 12px;&#13;
+      color: $primary;&#13;
+    }&#13;
+  }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Crew schedule + compliance overview</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>flightops_crew_pulse</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>FlightOps Crew Pulse</name>
+        <option_schema/>
+        <public>false</public>
+        <roles>x_1603912_flightop.ops_manager,x_1603912_flightop.crew_member</roles>
+        <script><![CDATA[(function() {
+  data.records = [];
+  data.loading = false;
+  data.canEdit = gs.hasRole('x_1603912_flightop.ops_manager') || gs.hasRole('admin');
+
+  var currentUser = gs.getUserID();
+  if (!currentUser) {
+    gs.addErrorMessage('Log in to view crew schedules.');
+    return;
+  }
+
+  var now = new GlideDateTime();
+  var cutoff = new GlideDateTime(now);
+  cutoff.addHoursLocalTime(48);
+
+  var gr = new GlideRecord('x_1603912_flightop_crew_schedule');
+
+  if (gs.hasRole('x_1603912_flightop.ops_manager') || gs.hasRole('admin')) {
+    gr.addQuery('u_scheduled_time', '>=', now);
+    gr.addQuery('u_scheduled_time', '<=', cutoff);
+  } else {
+    gr.addQuery('u_crew_member_id', currentUser);
+    gr.addQuery('u_scheduled_time', '>=', now);
+    gr.addQuery('u_scheduled_time', '<=', cutoff);
+  }
+
+  gr.orderBy('u_scheduled_time');
+  gr.setLimit(30);
+  gr.query();
+
+  while (gr.next()) {
+    data.records.push({
+      sys_id: gr.getUniqueValue(),
+      flight_number: gr.getValue('u_flight_number'),
+      crew_member: gr.getDisplayValue('u_crew_member_id'),
+      role_display: gr.getDisplayValue('u_role'),
+      scheduled_time_display: gr.getDisplayValue('u_scheduled_time'),
+      compliance_flag: gr.getValue('u_compliance_flag') == '1'
+    });
+  }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-08 22:33:57</sys_created_on>
+        <sys_id>13cdc9c4c37df210a9babe1d0501316e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>FlightOps Crew Pulse</sys_name>
+        <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
+        <sys_update_name>sp_widget_13cdc9c4c37df210a9babe1d0501316e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-08 22:37:32</sys_updated_on>
+        <template><![CDATA[<div class="flightops-crew-widget" ng-class="{'loading': c.data.loading}">
+  <div class="crew-widget-header">
+    <div>
+      <h3>Crew Pulse</h3>
+      <p>Upcoming assignments for the next 48 hours</p>
+    </div>
+    <button class="refresh" ng-click="c.refresh()" ng-disabled="c.data.loading">
+      <i class="fa" ng-class="{'fa-spinner fa-spin': c.data.loading, 'fa-refresh': !c.data.loading}"></i>
+    </button>
+  </div>
+
+  <div ng-if="c.data.loading" class="crew-loading" role="status">
+    <i class="fa fa-spinner fa-spin fa-3x"></i>
+    <p>Syncing crew roster…</p>
+  </div>
+
+  <div ng-if="!c.data.loading && c.data.records.length" class="crew-grid">
+    <div class="crew-card" ng-repeat="schedule in c.data.records" ng-class="{'non-compliant': !schedule.compliance_flag}">
+      <div class="crew-card__top">
+        <div>
+          <p class="label">Flight</p>
+          <h4>{{schedule.flight_number}}</h4>
+        </div>
+        <span class="role-chip">{{schedule.role_display}}</span>
+      </div>
+      <div class="crew-card__body">
+        <div class="crew-person">
+          <i class="fa fa-user-circle"></i>
+          <div>
+            <p class="name">{{schedule.crew_member}}</p>
+            <p class="time">{{schedule.scheduled_time_display}}</p>
+          </div>
+        </div>
+        <div class="compliance" ng-class="{'ok': schedule.compliance_flag, 'alert': !schedule.compliance_flag}">
+          <i class="fa" ng-class="schedule.compliance_flag ? 'fa-check' : 'fa-exclamation'}"></i>
+          <span>{{schedule.compliance_flag ? 'Compliant' : 'Action Required'}}</span>
+        </div>
+      </div>
+      <div class="crew-card__actions" ng-if="c.data.canEdit">
+        <button class="btn-link" ng-click="c.openRecord(schedule.sys_id)">
+          Manage Assignment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="!c.data.loading && !c.data.records.length" class="crew-empty">
+    <i class="fa fa-clipboard-check"></i>
+    <h4>No crew events in the next 48 hours</h4>
+    <p>Keep scheduling flowing from the Crew Schedule module.</p>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

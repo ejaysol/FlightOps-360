@@ -43,21 +43,21 @@ a:hover {&#13;
 }</css_variables>
         <footer display_value="FlightOps Footer">7ec2d745c31db610a9babe1d050131c8</footer>
         <footer_fixed>true</footer_fixed>
-        <header/>
+        <header display_value="FlightOps Header">8352db45c31db610a9babe1d050131c2</header>
         <name>FlightOps Theme</name>
         <navbar_fixed>true</navbar_fixed>
         <sys_class_name>sp_theme</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-11-17 14:05:42</sys_created_on>
         <sys_id>36409741c31db610a9babe1d0501315d</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>FlightOps Theme</sys_name>
         <sys_package display_value="FlightOps 360" source="x_1603912_flightop">9268dd89c35d7610a9babe1d0501314f</sys_package>
         <sys_policy/>
         <sys_scope display_value="FlightOps 360">9268dd89c35d7610a9babe1d0501314f</sys_scope>
         <sys_update_name>sp_theme_36409741c31db610a9babe1d0501315d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-12-04 11:01:50</sys_updated_on>
+        <sys_updated_on>2025-12-09 00:22:31</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>
